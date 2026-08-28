@@ -1,1 +1,882 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrimLineups</title>
 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg: #090a0d;
+            --panel: #101217;
+            --panel-hover: #171a20;
+            --border: #242831;
+            --text: #f1f2f3;
+            --muted: #858b96;
+            --red: #ff4655;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, Arial, sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .sidebar {
+            position: fixed;
+            inset: 0 auto 0 0;
+            width: 230px;
+            padding: 25px 15px;
+            background: #0d0f13;
+            border-right: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 0 10px 28px;
+        }
+
+        .brand-icon {
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+            background: var(--red);
+            font-weight: 800;
+        }
+
+        .brand-name {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .brand-name span {
+            color: var(--red);
+        }
+
+        .nav-title {
+            margin: 22px 10px 8px;
+            color: #5f6570;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .nav-button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 11px 10px;
+            border: 0;
+            border-radius: 7px;
+            background: transparent;
+            color: var(--muted);
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .nav-button:hover,
+        .nav-button.active {
+            background: #191c22;
+            color: white;
+        }
+
+        .nav-button.active {
+            box-shadow: inset 2px 0 var(--red);
+        }
+
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main {
+            margin-left: 230px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 38px;
+            background: rgba(9,10,13,.92);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(14px);
+        }
+
+        .breadcrumb {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .breadcrumb strong {
+            color: white;
+        }
+
+        .search {
+            width: 260px;
+            padding: 9px 13px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            outline: none;
+            background: #12151a;
+            color: white;
+            font-size: 12px;
+        }
+
+        .search:focus {
+            border-color: #454a55;
+        }
+
+        .content {
+            max-width: 1250px;
+            margin: auto;
+            padding: 45px 42px 80px;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 275px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 45px;
+            padding: 48px;
+            border: 1px solid var(--border);
+            background:
+                radial-gradient(circle at 80% 50%, rgba(255,70,85,.18), transparent 35%),
+                #111419;
+        }
+
+        .hero:after {
+            content: "B";
+            position: absolute;
+            right: 50px;
+            bottom: -80px;
+            color: rgba(255,255,255,.025);
+            font-size: 350px;
+            font-weight: 900;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            margin-bottom: 13px;
+            color: var(--red);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: .98;
+            letter-spacing: -3px;
+        }
+
+        .hero p {
+            margin: 0;
+            color: #969ca7;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 19px;
+        }
+
+        .section-header span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .maps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 13px;
+        }
+
+        .map-card {
+            position: relative;
+            height: 155px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .map-card:hover {
+            transform: translateY(-3px);
+            border-color: #525863;
+        }
+
+        .map-card:hover .map-image {
+            transform: scale(1.04);
+        }
+
+        .map-image {
+            position: absolute;
+            inset: 0;
+            background-position: center;
+            background-size: cover;
+            transition: .35s ease;
+        }
+
+        .map-image:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(7,8,10,.92), rgba(7,8,10,.18));
+        }
+
+        .map-info {
+            position: absolute;
+            left: 19px;
+            bottom: 17px;
+            z-index: 2;
+        }
+
+        .map-info h3 {
+            margin: 0 0 4px;
+            font-size: 20px;
+        }
+
+        .map-info p {
+            margin: 0;
+            color: #9298a3;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+        }
+
+        #mapPage {
+            display: none;
+        }
+
+        #mapPage.show {
+            display: block;
+        }
+
+        #home.hide {
+            display: none;
+        }
+
+        .back {
+            margin-bottom: 28px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .back:hover {
+            color: white;
+        }
+
+        .map-title {
+            margin-bottom: 30px;
+        }
+
+        .map-title h1 {
+            margin: 0 0 8px;
+            font-size: 40px;
+            letter-spacing: -2px;
+        }
+
+        .map-title p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .control {
+            padding: 12px 16px;
+            border: 0;
+            border-bottom: 2px solid transparent;
+            background: transparent;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .control:hover {
+            color: white;
+        }
+
+        .control.active {
+            border-bottom-color: var(--red);
+            color: white;
+        }
+
+        .sites {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 25px;
+        }
+
+        .site {
+            padding: 8px 15px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            background: var(--panel);
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .site:hover,
+        .site.active {
+            border-color: #454a55;
+            background: #1a1d23;
+            color: white;
+        }
+
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .lineup {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            transition: .2s ease;
+        }
+
+        .lineup:hover {
+            transform: translateY(-2px);
+            border-color: #3d424d;
+        }
+
+        .lineup-preview {
+            height: 155px;
+            display: grid;
+            place-items: center;
+            background: #15181d;
+            color: #555b66;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .lineup-preview span {
+            padding: 7px 10px;
+            border: 1px solid #383d46;
+        }
+
+        .lineup-body {
+            padding: 17px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 11px;
+        }
+
+        .tag {
+            padding: 4px 7px;
+            border-radius: 3px;
+            background: #1b1e24;
+            color: #aeb3bc;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .tag.red {
+            background: rgba(255,70,85,.1);
+            color: #ff6c78;
+        }
+
+        .lineup h3 {
+            margin: 0 0 6px;
+            font-size: 14px;
+        }
+
+        .lineup p {
+            margin: 0 0 15px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .view {
+            width: 100%;
+            padding: 9px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: #191c22;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .view:hover {
+            border-color: var(--red);
+            background: var(--red);
+        }
+
+        @media (max-width: 950px) {
+            .sidebar {
+                width: 65px;
+                padding: 20px 10px;
+            }
+
+            .brand {
+                justify-content: center;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .brand-name,
+            .nav-title,
+            .nav-button span {
+                display: none;
+            }
+
+            .nav-button {
+                justify-content: center;
+            }
+
+            .main {
+                margin-left: 65px;
+            }
+
+            .maps,
+            .lineup-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .search {
+                width: 150px;
+            }
+
+            .content {
+                padding: 30px 18px 60px;
+            }
+
+            .hero {
+                padding: 30px;
+            }
+
+            .maps,
+            .lineup-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">B</div>
+            <div class="brand-name">Brim<span>Lineups</span></div>
+        </div>
+
+        <div class="nav-title">Navigation</div>
+
+        <button class="nav-button active" onclick="goHome()">
+            <div class="nav-icon">⌂</div>
+            <span>All Maps</span>
+        </button>
+
+        <div class="nav-title">Sides</div>
+
+        <button class="nav-button" onclick="showSide('Attack')">
+            <div class="nav-icon">⚔</div>
+            <span>Attack</span>
+        </button>
+
+        <button class="nav-button" onclick="showSide('Defense')">
+            <div class="nav-icon">◈</div>
+            <span>Defense</span>
+        </button>
+
+        <div class="nav-title">Agent</div>
+
+        <button class="nav-button active">
+            <div class="nav-icon">B</div>
+            <span>Brimstone</span>
+        </button>
+
+    </aside>
+
+    <div class="main">
+
+        <header class="topbar">
+            <div class="breadcrumb">
+                BrimLineups / <strong id="crumb">Maps</strong>
+            </div>
+
+            <input
+                class="search"
+                id="search"
+                type="text"
+                placeholder="Search maps..."
+            >
+        </header>
+
+        <div class="content">
+
+            <section id="home">
+
+                <div class="hero">
+                    <div class="hero-content">
+                        <div class="eyebrow">VALORANT · BRIMSTONE</div>
+
+                        <h1>Lineups.<br>Made simple.</h1>
+
+                        <p>
+                            Find Brimstone lineups for every map, site and side.
+                            Built for quick access when you need them.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h2>Maps</h2>
+                    <span>12 maps</span>
+                </div>
+
+                <div class="maps">
+
+                    <div class="map-card" onclick="openMap('Abyss')">
+                        <div class="map-image" style="background-image:url('abyss.png')"></div>
+                        <div class="map-info">
+                            <h3>Abyss</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Ascent')">
+                        <div class="map-image" style="background-image:url('ascent.png')"></div>
+                        <div class="map-info">
+                            <h3>Ascent</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Bind')">
+                        <div class="map-image" style="background-image:url('bind.png')"></div>
+                        <div class="map-info">
+                            <h3>Bind</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Breeze')">
+                        <div class="map-image" style="background-image:url('breeze.png')"></div>
+                        <div class="map-info">
+                            <h3>Breeze</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Corrode')">
+                        <div class="map-image" style="background-image:url('corrode.png')"></div>
+                        <div class="map-info">
+                            <h3>Corrode</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Fracture')">
+                        <div class="map-image" style="background-image:url('fracture.png')"></div>
+                        <div class="map-info">
+                            <h3>Fracture</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Haven')">
+                        <div class="map-image" style="background-image:url('haven.png')"></div>
+                        <div class="map-info">
+                            <h3>Haven</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Icebox')">
+                        <div class="map-image" style="background-image:url('icebox.png')"></div>
+                        <div class="map-info">
+                            <h3>Icebox</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Lotus')">
+                        <div class="map-image" style="background-image:url('lotus.png')"></div>
+                        <div class="map-info">
+                            <h3>Lotus</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Pearl')">
+                        <div class="map-image" style="background-image:url('pearl.png')"></div>
+                        <div class="map-info">
+                            <h3>Pearl</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Split')">
+                        <div class="map-image" style="background-image:url('split.png')"></div>
+                        <div class="map-info">
+                            <h3>Split</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                    <div class="map-card" onclick="openMap('Sunset')">
+                        <div class="map-image" style="background-image:url('sunset.png')"></div>
+                        <div class="map-info">
+                            <h3>Sunset</h3>
+                            <p>Brimstone lineups</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section id="mapPage">
+
+                <button class="back" onclick="goHome()">← Back to maps</button>
+
+                <div class="map-title">
+                    <h1 id="mapTitle">Ascent</h1>
+                    <p>Brimstone lineups</p>
+                </div>
+
+                <div class="controls">
+                    <button class="control active" onclick="setSide(this)">
+                        Attack
+                    </button>
+
+                    <button class="control" onclick="setSide(this)">
+                        Defense
+                    </button>
+                </div>
+
+                <div class="sites">
+                    <button class="site active">A</button>
+                    <button class="site">B</button>
+                    <button class="site">C</button>
+                </div>
+
+                <div class="lineup-grid">
+
+                    <div class="lineup">
+                        <div class="lineup-preview">
+                            <span>Lineup image</span>
+                        </div>
+
+                        <div class="lineup-body">
+
+                            <div class="tags">
+                                <div class="tag red">Incendiary</div>
+                                <div class="tag">Attack</div>
+                            </div>
+
+                            <h3>A Main → Default</h3>
+
+                            <p>
+                                Default plant denial from A Main.
+                            </p>
+
+                            <button class="view">
+                                View lineup →
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="lineup">
+                        <div class="lineup-preview">
+                            <span>Lineup image</span>
+                        </div>
+
+                        <div class="lineup-body">
+
+                            <div class="tags">
+                                <div class="tag red">Incendiary</div>
+                                <div class="tag">Attack</div>
+                            </div>
+
+                            <h3>A Main → Hell</h3>
+
+                            <p>
+                                Clear or deny players hiding in Hell.
+                            </p>
+
+                            <button class="view">
+                                View lineup →
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="lineup">
+                        <div class="lineup-preview">
+                            <span>Lineup image</span>
+                        </div>
+
+                        <div class="lineup-body">
+
+                            <div class="tags">
+                                <div class="tag red">Incendiary</div>
+                                <div class="tag">Attack</div>
+                            </div>
+
+                            <h3>A Lobby → Generator</h3>
+
+                            <p>
+                                Delay the plant around Generator.
+                            </p>
+
+                            <button class="view">
+                                View lineup →
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <script>
+        const home = document.getElementById("home");
+        const mapPage = document.getElementById("mapPage");
+        const mapTitle = document.getElementById("mapTitle");
+        const crumb = document.getElementById("crumb");
+
+        function openMap(map) {
+            home.classList.add("hide");
+            mapPage.classList.add("show");
+
+            mapTitle.textContent = map;
+            crumb.textContent = map;
+
+            window.scrollTo(0, 0);
+        }
+
+        function goHome() {
+            mapPage.classList.remove("show");
+            home.classList.remove("hide");
+
+            crumb.textContent = "Maps";
+
+            window.scrollTo(0, 0);
+        }
+
+        function setSide(button) {
+            document.querySelectorAll(".control").forEach(control => {
+                control.classList.remove("active");
+            });
+
+            button.classList.add("active");
+        }
+
+        function showSide(side) {
+            home.classList.add("hide");
+            mapPage.classList.add("show");
+
+            mapTitle.textContent = side + " lineups";
+            crumb.textContent = side;
+
+            window.scrollTo(0, 0);
+        }
+
+        document.querySelectorAll(".site").forEach(site => {
+            site.addEventListener("click", () => {
+                document.querySelectorAll(".site").forEach(s => {
+                    s.classList.remove("active");
+                });
+
+                site.classList.add("active");
+            });
+        });
+
+        document.getElementById("search").addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+
+            document.querySelectorAll(".map-card").forEach(card => {
+                const name = card.querySelector("h3").textContent.toLowerCase();
+
+                card.style.display = name.includes(query) ? "" : "none";
+            });
+        });
+    </script>
+
+</body>
+</html>
+```
