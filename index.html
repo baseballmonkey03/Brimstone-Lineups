@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -22,6 +21,10 @@
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -476,7 +479,6 @@ footer {
 }
 
 @media (max-width: 900px) {
-
     .maps,
     .lineup-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -489,7 +491,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-
     .hero {
         min-height: 380px;
     }
@@ -513,310 +514,280 @@ footer {
     }
 }
 </style>
-
 </head>
 
 <body>
 
 <section id="home">
 
-```
-<div class="hero">
+    <div class="hero">
+        <div class="hero-content">
 
-    <div class="hero-content">
+            <div class="eyebrow">
+                VALORANT · BRIMSTONE
+            </div>
 
-        <div class="eyebrow">
-            VALORANT · BRIMSTONE
+            <h1>
+                BrimLineups
+            </h1>
+
+            <p>
+                A community collection of Brimstone lineups
+                for every map. Find the lineup you need,
+                learn the setup, and win the round.
+            </p>
+
+            <div class="hero-small">
+                12 maps · Brimstone
+            </div>
+
         </div>
-
-        <h1>
-            BrimLineups
-        </h1>
-
-        <p>
-            A community collection of Brimstone lineups
-            for every map. Find the lineup you need,
-            learn the setup, and win the round.
-        </p>
-
-        <div class="hero-small">
-            12 maps · Brimstone
-        </div>
-
     </div>
 
-</div>
+    <div class="content">
 
-<div class="content">
+        <div class="section-heading">
+            <h2>Maps</h2>
+            <span>Choose a map to get started</span>
+        </div>
 
-    <div class="section-heading">
-        <h2>Maps</h2>
-        <span>Choose a map to get started</span>
+        <div class="maps">
+
+            <div class="map-card" onclick="openMap('Abyss')">
+                <div class="map-image" style="background-image:url('abyss.png')"></div>
+                <div class="map-info">
+                    <h3>Abyss</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Ascent')">
+                <div class="map-image" style="background-image:url('ascent.png')"></div>
+                <div class="map-info">
+                    <h3>Ascent</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Bind')">
+                <div class="map-image" style="background-image:url('bind.png')"></div>
+                <div class="map-info">
+                    <h3>Bind</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Breeze')">
+                <div class="map-image" style="background-image:url('breeze.png')"></div>
+                <div class="map-info">
+                    <h3>Breeze</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Corrode')">
+                <div class="map-image" style="background-image:url('corrode.png')"></div>
+                <div class="map-info">
+                    <h3>Corrode</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Fracture')">
+                <div class="map-image" style="background-image:url('fracture.png')"></div>
+                <div class="map-info">
+                    <h3>Fracture</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Haven')">
+                <div class="map-image" style="background-image:url('haven.png')"></div>
+                <div class="map-info">
+                    <h3>Haven</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Icebox')">
+                <div class="map-image" style="background-image:url('icebox.png')"></div>
+                <div class="map-info">
+                    <h3>Icebox</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Lotus')">
+                <div class="map-image" style="background-image:url('lotus.png')"></div>
+                <div class="map-info">
+                    <h3>Lotus</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Pearl')">
+                <div class="map-image" style="background-image:url('pearl.png')"></div>
+                <div class="map-info">
+                    <h3>Pearl</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Split')">
+                <div class="map-image" style="background-image:url('split.png')"></div>
+                <div class="map-info">
+                    <h3>Split</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Sunset')">
+                <div class="map-image" style="background-image:url('sunset.png')"></div>
+                <div class="map-info">
+                    <h3>Sunset</h3>
+                    <p>Brimstone lineups</p>
+                </div>
+            </div>
+
+        </div>
     </div>
-
-    <div class="maps">
-
-        <div class="map-card" onclick="openMap('Abyss')">
-            <div class="map-image" style="background-image:url('abyss.png')"></div>
-            <div class="map-info">
-                <h3>Abyss</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Ascent')">
-            <div class="map-image" style="background-image:url('ascent.png')"></div>
-            <div class="map-info">
-                <h3>Ascent</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Bind')">
-            <div class="map-image" style="background-image:url('bind.png')"></div>
-            <div class="map-info">
-                <h3>Bind</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Breeze')">
-            <div class="map-image" style="background-image:url('breeze.png')"></div>
-            <div class="map-info">
-                <h3>Breeze</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Corrode')">
-            <div class="map-image" style="background-image:url('corrode.png')"></div>
-            <div class="map-info">
-                <h3>Corrode</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Fracture')">
-            <div class="map-image" style="background-image:url('fracture.png')"></div>
-            <div class="map-info">
-                <h3>Fracture</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Haven')">
-            <div class="map-image" style="background-image:url('haven.png')"></div>
-            <div class="map-info">
-                <h3>Haven</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Icebox')">
-            <div class="map-image" style="background-image:url('icebox.png')"></div>
-            <div class="map-info">
-                <h3>Icebox</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Lotus')">
-            <div class="map-image" style="background-image:url('lotus.png')"></div>
-            <div class="map-info">
-                <h3>Lotus</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Pearl')">
-            <div class="map-image" style="background-image:url('pearl.png')"></div>
-            <div class="map-info">
-                <h3>Pearl</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Split')">
-            <div class="map-image" style="background-image:url('split.png')"></div>
-            <div class="map-info">
-                <h3>Split</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Sunset')">
-            <div class="map-image" style="background-image:url('sunset.png')"></div>
-            <div class="map-info">
-                <h3>Sunset</h3>
-                <p>Brimstone lineups</p>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-```
 
 </section>
 
 <section id="mapPage">
 
-```
-<div class="content">
+    <div class="content">
 
-    <button class="back" onclick="goHome()">
-        ← Back to maps
-    </button>
-
-    <div class="map-banner">
-
-        <div id="mapBannerImage" class="map-banner-image"></div>
-
-        <div class="map-banner-content">
-
-            <div class="map-banner-label">
-                Brimstone · Lineups
-            </div>
-
-            <h1 id="mapTitle">
-                Ascent
-            </h1>
-
-            <p>
-                Choose a side and site to find your lineup.
-            </p>
-
-        </div>
-
-    </div>
-
-    <div class="side-tabs">
-
-        <button
-            class="side-tab active"
-            onclick="setSide(this, 'Attack')">
-            ⚔ Attack
+        <button class="back" onclick="goHome()">
+            ← Back to maps
         </button>
 
-        <button
-            class="side-tab"
-            onclick="setSide(this, 'Defense')">
-            ◈ Defense
-        </button>
+        <div class="map-banner">
 
-    </div>
+            <div id="mapBannerImage" class="map-banner-image"></div>
 
-    <div class="site-tabs">
+            <div class="map-banner-content">
 
-        <button
-            class="site-tab active"
-            onclick="setSite(this, 'A')">
-            A
-        </button>
-
-        <button
-            class="site-tab"
-            onclick="setSite(this, 'B')">
-            B
-        </button>
-
-        <button
-            class="site-tab"
-            onclick="setSite(this, 'C')">
-            C
-        </button>
-
-    </div>
-
-    <div class="lineup-grid">
-
-        <div class="lineup">
-
-            <div class="lineup-preview">
-                <span>Lineup screenshot</span>
-            </div>
-
-            <div class="lineup-body">
-
-                <div class="tags">
-                    <div class="tag red">Incendiary</div>
-                    <div class="tag">Attack</div>
+                <div class="map-banner-label">
+                    Brimstone · Lineups
                 </div>
 
-                <h3>A Main → Default</h3>
+                <h1 id="mapTitle">
+                    Ascent
+                </h1>
 
                 <p>
-                    Default plant denial from A Main.
+                    Choose a side and site to find your lineup.
                 </p>
-
-                <button class="view">
-                    View lineup →
-                </button>
 
             </div>
 
         </div>
 
+        <div class="side-tabs">
 
-        <div class="lineup">
+            <button
+                class="side-tab active"
+                onclick="setSide(this, 'Attack')">
+                ⚔ Attack
+            </button>
 
-            <div class="lineup-preview">
-                <span>Lineup screenshot</span>
-            </div>
-
-            <div class="lineup-body">
-
-                <div class="tags">
-                    <div class="tag red">Incendiary</div>
-                    <div class="tag">Attack</div>
-                </div>
-
-                <h3>A Main → Hell</h3>
-
-                <p>
-                    Deny the plant around Hell.
-                </p>
-
-                <button class="view">
-                    View lineup →
-                </button>
-
-            </div>
+            <button
+                class="side-tab"
+                onclick="setSide(this, 'Defense')">
+                ◈ Defense
+            </button>
 
         </div>
 
+        <div class="site-tabs" id="siteTabs"></div>
 
-        <div class="lineup">
+        <div class="lineup-grid" id="lineupGrid">
 
-            <div class="lineup-preview">
-                <span>Lineup screenshot</span>
-            </div>
+            <div class="lineup">
 
-            <div class="lineup-body">
-
-                <div class="tags">
-                    <div class="tag red">Incendiary</div>
-                    <div class="tag">Attack</div>
+                <div class="lineup-preview">
+                    <span>Lineup screenshot</span>
                 </div>
 
-                <h3>A Lobby → Generator</h3>
+                <div class="lineup-body">
 
-                <p>
-                    Delay the plant around Generator.
-                </p>
+                    <div class="tags">
+                        <div class="tag red">Incendiary</div>
+                        <div class="tag">Attack</div>
+                    </div>
 
-                <button class="view">
-                    View lineup →
-                </button>
+                    <h3>A Main → Default</h3>
+
+                    <p>
+                        Default plant denial from A Main.
+                    </p>
+
+                    <button class="view">
+                        View lineup →
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="lineup">
+
+                <div class="lineup-preview">
+                    <span>Lineup screenshot</span>
+                </div>
+
+                <div class="lineup-body">
+
+                    <div class="tags">
+                        <div class="tag red">Incendiary</div>
+                        <div class="tag">Attack</div>
+                    </div>
+
+                    <h3>A Main → Hell</h3>
+
+                    <p>
+                        Deny the plant around Hell.
+                    </p>
+
+                    <button class="view">
+                        View lineup →
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="lineup">
+
+                <div class="lineup-preview">
+                    <span>Lineup screenshot</span>
+                </div>
+
+                <div class="lineup-body">
+
+                    <div class="tags">
+                        <div class="tag red">Incendiary</div>
+                        <div class="tag">Attack</div>
+                    </div>
+
+                    <h3>A Lobby → Generator</h3>
+
+                    <p>
+                        Delay the plant around Generator.
+                    </p>
+
+                    <button class="view">
+                        View lineup →
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
     </div>
-
-</div>
-```
 
 </section>
 
@@ -830,6 +801,7 @@ const home = document.getElementById("home");
 const mapPage = document.getElementById("mapPage");
 const mapTitle = document.getElementById("mapTitle");
 const mapBannerImage = document.getElementById("mapBannerImage");
+const siteTabs = document.getElementById("siteTabs");
 
 const mapImages = {
     Abyss: "abyss.png",
@@ -846,16 +818,29 @@ const mapImages = {
     Sunset: "sunset.png"
 };
 
+const mapSites = {
+    Abyss: ["A", "B"],
+    Ascent: ["A", "B"],
+    Bind: ["A", "B"],
+    Breeze: ["A", "B"],
+    Corrode: ["A", "B", "C"],
+    Fracture: ["A", "B"],
+    Haven: ["A", "B", "C"],
+    Icebox: ["A", "B"],
+    Lotus: ["A", "B", "C"],
+    Pearl: ["A", "B"],
+    Split: ["A", "B"],
+    Sunset: ["A", "B"]
+};
+
 let currentMap = "Abyss";
 let currentSide = "Attack";
 let currentSite = "A";
-
 
 function openMap(map) {
 
     currentMap = map;
     currentSide = "Attack";
-    currentSite = "A";
 
     home.classList.add("hidden");
     mapPage.classList.add("active");
@@ -871,16 +856,10 @@ function openMap(map) {
 
     document.querySelector(".side-tab").classList.add("active");
 
-    document.querySelectorAll(".site-tab").forEach(button => {
-        button.classList.remove("active");
-    });
-
-    document.querySelector(".site-tab").classList.add("active");
+    createSiteTabs();
 
     window.scrollTo(0, 0);
-
 }
-
 
 function goHome() {
 
@@ -888,9 +867,7 @@ function goHome() {
     home.classList.remove("hidden");
 
     window.scrollTo(0, 0);
-
 }
-
 
 function setSide(button, side) {
 
@@ -903,9 +880,7 @@ function setSide(button, side) {
     button.classList.add("active");
 
     updateLineups();
-
 }
-
 
 function setSite(button, site) {
 
@@ -918,9 +893,38 @@ function setSite(button, site) {
     button.classList.add("active");
 
     updateLineups();
-
 }
 
+function createSiteTabs() {
+
+    siteTabs.innerHTML = "";
+
+    const sites = mapSites[currentMap];
+
+    currentSite = sites[0];
+
+    sites.forEach((site, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "site-tab";
+
+        if (index === 0) {
+            button.classList.add("active");
+        }
+
+        button.textContent = site;
+
+        button.onclick = function() {
+            setSite(this, site);
+        };
+
+        siteTabs.appendChild(button);
+
+    });
+
+    updateLineups();
+}
 
 function updateLineups() {
 
