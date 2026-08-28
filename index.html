@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -22,6 +23,10 @@
     box-sizing: border-box;
 }
 
+html {
+    background: var(--bg);
+}
+
 body {
     margin: 0;
     background: var(--bg);
@@ -31,10 +36,6 @@ body {
 
 button {
     font: inherit;
-}
-
-button,
-.map-card {
     cursor: pointer;
 }
 
@@ -73,7 +74,9 @@ button,
 .header-right {
     margin-left: auto;
     color: #666c76;
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .container {
@@ -83,7 +86,7 @@ button,
 }
 
 .intro {
-    padding: 48px 0 34px;
+    padding: 45px 0 32px;
 }
 
 .intro-label {
@@ -133,11 +136,14 @@ button,
 
 .map-card {
     position: relative;
-    height: 145px;
+    height: 125px;
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--surface);
-    transition: border-color .15s, transform .15s;
+    cursor: pointer;
+    transition:
+        border-color .15s ease,
+        transform .15s ease;
 }
 
 .map-card:hover {
@@ -147,14 +153,15 @@ button,
 
 .map-image {
     position: absolute;
-    inset: 0;
+    inset: -2px;
     background-size: cover;
     background-position: center;
-    transition: transform .3s;
+    filter: contrast(1.03) saturate(1.05);
+    transition: transform .3s ease;
 }
 
 .map-card:hover .map-image {
-    transform: scale(1.04);
+    transform: scale(1.025);
 }
 
 .map-image::after {
@@ -162,8 +169,16 @@ button,
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(0deg, rgba(5,6,8,.95), rgba(5,6,8,.15)),
-        linear-gradient(90deg, rgba(5,6,8,.7), transparent);
+        linear-gradient(
+            0deg,
+            rgba(5, 6, 8, .94),
+            rgba(5, 6, 8, .12)
+        ),
+        linear-gradient(
+            90deg,
+            rgba(5, 6, 8, .62),
+            transparent
+        );
 }
 
 .map-name {
@@ -239,20 +254,32 @@ button,
     overflow: hidden;
     border: 1px solid var(--border);
     margin-bottom: 18px;
+    background: var(--surface);
 }
 
-.map-image-large div {
+#mapBanner {
     position: absolute;
-    inset: 0;
+    inset: -2px;
     background-size: cover;
     background-position: center;
+    filter: contrast(1.03) saturate(1.05);
 }
 
-.map-image-large div::after {
+#mapBanner::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(5,6,8,.85), rgba(5,6,8,.2));
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 6, 8, .86),
+            rgba(5, 6, 8, .20)
+        ),
+        linear-gradient(
+            0deg,
+            rgba(5, 6, 8, .85),
+            transparent
+        );
 }
 
 .map-image-large h2 {
@@ -284,6 +311,11 @@ button,
     padding: 10px 22px;
 }
 
+.side-tab:hover {
+    border-color: #555b65;
+    color: white;
+}
+
 .side-tab.active {
     color: white;
     border-color: var(--red);
@@ -299,6 +331,11 @@ button,
 .site-tab {
     width: 42px;
     height: 34px;
+}
+
+.site-tab:hover {
+    border-color: #555b65;
+    color: white;
 }
 
 .site-tab.active {
@@ -318,11 +355,22 @@ button,
     border: 1px solid var(--border);
     background: var(--surface);
     overflow: hidden;
+    transition: border-color .15s, transform .15s;
+}
+
+.lineup:hover {
+    border-color: #484e58;
+    transform: translateY(-2px);
 }
 
 .lineup-preview {
     height: 150px;
-    background: #171a1f;
+    background:
+        radial-gradient(
+            circle at center,
+            #1b1e24,
+            #111419
+        );
     display: grid;
     place-items: center;
     color: #555b64;
@@ -381,6 +429,7 @@ footer {
 }
 
 @media (max-width: 900px) {
+
     .maps {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -391,6 +440,7 @@ footer {
 }
 
 @media (max-width: 650px) {
+
     .header {
         padding: 0 18px;
     }
@@ -416,241 +466,341 @@ footer {
     }
 }
 </style>
+
 </head>
 
 <body>
 
 <header class="header">
-    <div class="logo">
-        <div class="logo-box">B</div>
-        Brim<span>Lineups</span>
-    </div>
 
-    <div class="header-right">
-        BRIMSTONE LINEUP DATABASE
-    </div>
+```
+<div class="logo">
+    <div class="logo-box">B</div>
+    Brim<span>Lineups</span>
+</div>
+
+<div class="header-right">
+    BRIMSTONE LINEUP DATABASE
+</div>
+```
+
 </header>
 
 <section id="home">
 
-    <main class="container">
+```
+<main class="container">
 
-        <div class="intro">
-            <div class="intro-label">VALORANT · BRIMSTONE</div>
-            <h1>Find your lineup.</h1>
-            <p>Browse Brimstone lineups by map, side, and site.</p>
+    <div class="intro">
+
+        <div class="intro-label">
+            VALORANT · BRIMSTONE
         </div>
 
-        <div class="maps-header">
-            <h2>Maps</h2>
-            <span>12 maps</span>
+        <h1>
+            Find your lineup.
+        </h1>
+
+        <p>
+            Browse Brimstone lineups by map, side, and site.
+        </p>
+
+    </div>
+
+
+    <div class="maps-header">
+
+        <h2>
+            Maps
+        </h2>
+
+        <span>
+            12 maps
+        </span>
+
+    </div>
+
+
+    <div class="maps">
+
+        <div class="map-card" onclick="openMap('Abyss')">
+            <div class="map-image" style="background-image:url('abyss.png')"></div>
+            <div class="map-name">
+                <h3>Abyss</h3>
+                <small>Lineups</small>
+            </div>
         </div>
 
-        <div class="maps">
-
-            <div class="map-card" onclick="openMap('Abyss')">
-                <div class="map-image" style="background-image:url('abyss.png')"></div>
-                <div class="map-name">
-                    <h3>Abyss</h3>
-                    <small>Lineups</small>
-                </div>
+        <div class="map-card" onclick="openMap('Ascent')">
+            <div class="map-image" style="background-image:url('ascent.png')"></div>
+            <div class="map-name">
+                <h3>Ascent</h3>
+                <small>Lineups</small>
             </div>
-
-            <div class="map-card" onclick="openMap('Ascent')">
-                <div class="map-image" style="background-image:url('ascent.png')"></div>
-                <div class="map-name">
-                    <h3>Ascent</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Bind')">
-                <div class="map-image" style="background-image:url('bind.png')"></div>
-                <div class="map-name">
-                    <h3>Bind</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Breeze')">
-                <div class="map-image" style="background-image:url('breeze.png')"></div>
-                <div class="map-name">
-                    <h3>Breeze</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Corrode')">
-                <div class="map-image" style="background-image:url('corrode.png')"></div>
-                <div class="map-name">
-                    <h3>Corrode</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Fracture')">
-                <div class="map-image" style="background-image:url('fracture.png')"></div>
-                <div class="map-name">
-                    <h3>Fracture</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Haven')">
-                <div class="map-image" style="background-image:url('haven.png')"></div>
-                <div class="map-name">
-                    <h3>Haven</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Icebox')">
-                <div class="map-image" style="background-image:url('icebox.png')"></div>
-                <div class="map-name">
-                    <h3>Icebox</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Lotus')">
-                <div class="map-image" style="background-image:url('lotus.png')"></div>
-                <div class="map-name">
-                    <h3>Lotus</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Pearl')">
-                <div class="map-image" style="background-image:url('pearl.png')"></div>
-                <div class="map-name">
-                    <h3>Pearl</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Split')">
-                <div class="map-image" style="background-image:url('split.png')"></div>
-                <div class="map-name">
-                    <h3>Split</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
-            <div class="map-card" onclick="openMap('Sunset')">
-                <div class="map-image" style="background-image:url('sunset.png')"></div>
-                <div class="map-name">
-                    <h3>Sunset</h3>
-                    <small>Lineups</small>
-                </div>
-            </div>
-
         </div>
 
-    </main>
+        <div class="map-card" onclick="openMap('Bind')">
+            <div class="map-image" style="background-image:url('bind.png')"></div>
+            <div class="map-name">
+                <h3>Bind</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Breeze')">
+            <div class="map-image" style="background-image:url('breeze.png')"></div>
+            <div class="map-name">
+                <h3>Breeze</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Corrode')">
+            <div class="map-image" style="background-image:url('corrode.png')"></div>
+            <div class="map-name">
+                <h3>Corrode</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Fracture')">
+            <div class="map-image" style="background-image:url('fracture.png')"></div>
+            <div class="map-name">
+                <h3>Fracture</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Haven')">
+            <div class="map-image" style="background-image:url('haven.png')"></div>
+            <div class="map-name">
+                <h3>Haven</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Icebox')">
+            <div class="map-image" style="background-image:url('icebox.png')"></div>
+            <div class="map-name">
+                <h3>Icebox</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Lotus')">
+            <div class="map-image" style="background-image:url('lotus.png')"></div>
+            <div class="map-name">
+                <h3>Lotus</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Pearl')">
+            <div class="map-image" style="background-image:url('pearl.png')"></div>
+            <div class="map-name">
+                <h3>Pearl</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Split')">
+            <div class="map-image" style="background-image:url('split.png')"></div>
+            <div class="map-name">
+                <h3>Split</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+        <div class="map-card" onclick="openMap('Sunset')">
+            <div class="map-image" style="background-image:url('sunset.png')"></div>
+            <div class="map-name">
+                <h3>Sunset</h3>
+                <small>Lineups</small>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+```
 
 </section>
 
 <section id="mapPage">
 
-    <main class="container">
+```
+<main class="container">
 
-        <div class="map-top">
+    <div class="map-top">
 
-            <button class="back" onclick="goHome()">← Maps</button>
+        <button class="back" onclick="goHome()">
+            ← Maps
+        </button>
 
-            <div class="map-heading">
-                <h1 id="mapTitle">Abyss</h1>
-                <p>Brimstone lineups</p>
+        <div class="map-heading">
+
+            <h1 id="mapTitle">
+                Abyss
+            </h1>
+
+            <p>
+                Brimstone lineups
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="map-image-large">
+
+        <div id="mapBanner"></div>
+
+        <h2 id="mapBannerTitle">
+            Abyss
+        </h2>
+
+    </div>
+
+
+    <div class="side-tabs">
+
+        <button
+            class="side-tab active"
+            onclick="setSide(this)">
+            Attack
+        </button>
+
+        <button
+            class="side-tab"
+            onclick="setSide(this)">
+            Defense
+        </button>
+
+    </div>
+
+
+    <div class="site-tabs">
+
+        <button
+            class="site-tab active"
+            onclick="setSite(this)">
+            A
+        </button>
+
+        <button
+            class="site-tab"
+            onclick="setSite(this)">
+            B
+        </button>
+
+        <button
+            class="site-tab"
+            onclick="setSite(this)">
+            C
+        </button>
+
+    </div>
+
+
+    <div class="lineup-grid">
+
+        <div class="lineup">
+
+            <div class="lineup-preview">
+                <span>Lineup screenshot</span>
             </div>
 
-        </div>
+            <div class="lineup-content">
 
-        <div class="map-image-large">
-            <div id="mapBanner"></div>
-            <h2 id="mapBannerTitle">Abyss</h2>
-        </div>
-
-        <div class="side-tabs">
-
-            <button class="side-tab active" onclick="setSide(this)">
-                Attack
-            </button>
-
-            <button class="side-tab" onclick="setSide(this)">
-                Defense
-            </button>
-
-        </div>
-
-        <div class="site-tabs">
-
-            <button class="site-tab active" onclick="setSite(this)">
-                A
-            </button>
-
-            <button class="site-tab" onclick="setSite(this)">
-                B
-            </button>
-
-            <button class="site-tab" onclick="setSite(this)">
-                C
-            </button>
-
-        </div>
-
-        <div class="lineup-grid">
-
-            <div class="lineup">
-                <div class="lineup-preview">
-                    <span>Lineup screenshot</span>
-                </div>
-
-                <div class="lineup-content">
-                    <div class="lineup-tags">
-                        <div class="tag red">Incendiary</div>
-                        <div class="tag">Attack</div>
+                <div class="lineup-tags">
+                    <div class="tag red">
+                        Incendiary
                     </div>
 
-                    <h3>A Main → Default</h3>
-                    <p>Default plant denial lineup.</p>
-                </div>
-            </div>
-
-            <div class="lineup">
-                <div class="lineup-preview">
-                    <span>Lineup screenshot</span>
-                </div>
-
-                <div class="lineup-content">
-                    <div class="lineup-tags">
-                        <div class="tag red">Incendiary</div>
-                        <div class="tag">Attack</div>
+                    <div class="tag">
+                        Attack
                     </div>
-
-                    <h3>A Main → Back Site</h3>
-                    <p>Delay the plant from A Main.</p>
-                </div>
-            </div>
-
-            <div class="lineup">
-                <div class="lineup-preview">
-                    <span>Lineup screenshot</span>
                 </div>
 
-                <div class="lineup-content">
-                    <div class="lineup-tags">
-                        <div class="tag red">Incendiary</div>
-                        <div class="tag">Attack</div>
-                    </div>
+                <h3>
+                    A Main → Default
+                </h3>
 
-                    <h3>A Lobby → Default</h3>
-                    <p>Simple post-plant lineup.</p>
-                </div>
+                <p>
+                    Default plant denial lineup.
+                </p>
+
             </div>
 
         </div>
 
-    </main>
+
+        <div class="lineup">
+
+            <div class="lineup-preview">
+                <span>Lineup screenshot</span>
+            </div>
+
+            <div class="lineup-content">
+
+                <div class="lineup-tags">
+                    <div class="tag red">
+                        Incendiary
+                    </div>
+
+                    <div class="tag">
+                        Attack
+                    </div>
+                </div>
+
+                <h3>
+                    A Main → Back Site
+                </h3>
+
+                <p>
+                    Delay the plant from A Main.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="lineup">
+
+            <div class="lineup-preview">
+                <span>Lineup screenshot</span>
+            </div>
+
+            <div class="lineup-content">
+
+                <div class="lineup-tags">
+                    <div class="tag red">
+                        Incendiary
+                    </div>
+
+                    <div class="tag">
+                        Attack
+                    </div>
+                </div>
+
+                <h3>
+                    A Lobby → Default
+                </h3>
+
+                <p>
+                    Simple post-plant lineup.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+```
 
 </section>
 
@@ -681,6 +831,7 @@ const mapImages = {
     Sunset: "sunset.png"
 };
 
+
 function openMap(map) {
 
     home.classList.add("hidden");
@@ -703,6 +854,7 @@ function openMap(map) {
     window.scrollTo(0, 0);
 }
 
+
 function goHome() {
 
     mapPage.classList.remove("active");
@@ -710,6 +862,7 @@ function goHome() {
 
     window.scrollTo(0, 0);
 }
+
 
 function setSide(button) {
 
@@ -719,6 +872,7 @@ function setSide(button) {
 
     button.classList.add("active");
 }
+
 
 function setSite(button) {
 
