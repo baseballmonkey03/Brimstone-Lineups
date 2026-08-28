@@ -4,23 +4,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BrimLineups</title>
+
+<title>BrimLineups — Brimstone Lineups</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root {
     --bg: #08090c;
     --panel: #101218;
-    --panel2: #15171e;
+    --panel-hover: #171a21;
     --border: #252832;
-    --text: #f3f3f4;
-    --muted: #858a95;
+    --text: #f3f4f5;
+    --muted: #858b96;
     --red: #ff4655;
 }
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -39,127 +44,85 @@ button {
     cursor: pointer;
 }
 
-.sidebar {
-    position: fixed;
-    left: 0;
+.topbar {
+    position: sticky;
     top: 0;
-    bottom: 0;
-    width: 230px;
-    padding: 24px 14px;
-    background: #0c0e12;
-    border-right: 1px solid var(--border);
-    z-index: 20;
+    z-index: 50;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 42px;
+    background: rgba(8,9,12,.9);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
 }
 
-.brand {
+.logo {
     display: flex;
     align-items: center;
     gap: 11px;
-    padding: 0 10px 30px;
+    cursor: pointer;
 }
 
-.brand-icon {
+.logo-mark {
     width: 36px;
     height: 36px;
     display: grid;
     place-items: center;
-    background: var(--red);
     border-radius: 7px;
-    font-weight: 800;
+    background: var(--red);
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
 }
 
-.brand-name {
+.logo-text {
     font-size: 16px;
     font-weight: 800;
+    letter-spacing: -.4px;
 }
 
-.brand-name span {
+.logo-text span {
     color: var(--red);
 }
 
-.nav-title {
-    margin: 20px 10px 8px;
-    color: #5f6570;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-}
-
-.nav-button {
-    width: 100%;
+.top-right {
     display: flex;
     align-items: center;
-    gap: 11px;
-    padding: 11px 10px;
-    border: 0;
-    border-radius: 6px;
-    background: transparent;
+    gap: 18px;
+}
+
+.top-link {
     color: var(--muted);
-    text-align: left;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
 }
 
-.nav-button:hover,
-.nav-button.active {
-    background: #191c22;
-    color: white;
-}
-
-.nav-button.active {
-    box-shadow: inset 2px 0 var(--red);
-}
-
-.nav-icon {
-    width: 20px;
-    text-align: center;
-}
-
-.main {
-    margin-left: 230px;
-    min-height: 100vh;
-}
-
-.topbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 38px;
-    background: rgba(8,9,12,.94);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(15px);
-}
-
-.breadcrumb {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.breadcrumb strong {
+.top-link:hover {
     color: white;
 }
 
 .search {
-    width: 260px;
+    width: 230px;
     padding: 9px 13px;
     border: 1px solid var(--border);
     border-radius: 6px;
     outline: none;
-    background: #12151a;
+    background: #11141a;
     color: white;
     font-size: 12px;
 }
 
-.search:focus {
-    border-color: #555a65;
+.search::placeholder {
+    color: #626873;
 }
 
-.content {
+.search:focus {
+    border-color: #4d535e;
+}
+
+main {
     max-width: 1250px;
     margin: auto;
     padding: 42px;
@@ -167,71 +130,85 @@ button {
 
 .hero {
     position: relative;
-    min-height: 285px;
+    min-height: 330px;
     display: flex;
     align-items: center;
     overflow: hidden;
-    margin-bottom: 45px;
-    padding: 50px;
+    margin-bottom: 48px;
+    padding: 55px;
     border: 1px solid var(--border);
     background:
-        radial-gradient(circle at 80% 50%, rgba(255,70,85,.17), transparent 36%),
-        linear-gradient(135deg, #11141a, #0c0e12);
+        radial-gradient(circle at 85% 45%, rgba(255,70,85,.2), transparent 35%),
+        linear-gradient(135deg, #12151b, #0c0e12);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    right: -120px;
+    top: -150px;
+    border: 1px solid rgba(255,255,255,.035);
+    border-radius: 50%;
 }
 
 .hero::after {
     content: "B";
     position: absolute;
-    right: 45px;
-    bottom: -90px;
+    right: 70px;
+    bottom: -115px;
     color: rgba(255,255,255,.025);
-    font-size: 370px;
-    font-weight: 800;
+    font-size: 390px;
     line-height: 1;
+    font-weight: 900;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 650px;
+    max-width: 680px;
 }
 
 .eyebrow {
-    margin-bottom: 13px;
+    margin-bottom: 15px;
     color: var(--red);
     font-size: 10px;
     font-weight: 800;
-    letter-spacing: 1.6px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
 }
 
 .hero h1 {
-    margin: 0 0 14px;
-    font-size: clamp(42px, 5vw, 65px);
-    line-height: .96;
-    letter-spacing: -3px;
+    margin: 0 0 17px;
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: .94;
+    letter-spacing: -4px;
 }
 
 .hero p {
-    max-width: 570px;
+    max-width: 590px;
     margin: 0;
-    color: #969ba5;
-    font-size: 13px;
+    color: #979da7;
+    font-size: 14px;
     line-height: 1.7;
 }
 
-.section-header {
+.section-head {
     display: flex;
-    justify-content: space-between;
     align-items: end;
-    margin-bottom: 18px;
+    justify-content: space-between;
+    margin-bottom: 19px;
 }
 
-.section-header h2 {
+.section-head h2 {
     margin: 0;
-    font-size: 19px;
+    font-size: 20px;
+    letter-spacing: -.5px;
 }
 
-.section-header span {
+.section-head p {
+    margin: 0;
     color: var(--muted);
     font-size: 11px;
 }
@@ -244,12 +221,12 @@ button {
 
 .map-card {
     position: relative;
-    height: 165px;
+    height: 170px;
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--panel);
     cursor: pointer;
-    transition: .2s ease;
+    transition: transform .2s ease, border-color .2s ease;
 }
 
 .map-card:hover {
@@ -266,7 +243,7 @@ button {
     inset: 0;
     background-position: center;
     background-size: cover;
-    transition: .35s ease;
+    transition: transform .35s ease;
 }
 
 .map-image::after {
@@ -274,13 +251,13 @@ button {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(90deg, rgba(5,6,8,.94), rgba(5,6,8,.18)),
-        linear-gradient(0deg, rgba(5,6,8,.8), transparent 65%);
+        linear-gradient(90deg, rgba(5,6,8,.94), rgba(5,6,8,.22)),
+        linear-gradient(0deg, rgba(5,6,8,.82), transparent 70%);
 }
 
 .map-info {
     position: absolute;
-    left: 20px;
+    left: 21px;
     bottom: 18px;
     z-index: 2;
 }
@@ -288,105 +265,148 @@ button {
 .map-info h3 {
     margin: 0 0 5px;
     font-size: 21px;
+    letter-spacing: -.4px;
 }
 
-.map-info p {
-    margin: 0;
-    color: #9a9fa8;
+.map-info span {
+    color: #969ca6;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 1.1px;
     text-transform: uppercase;
 }
 
-#mapPage {
+#map-page {
     display: none;
 }
 
-#mapPage.show {
+#map-page.active {
     display: block;
 }
 
-#home.hide {
+#home.hidden {
     display: none;
 }
 
 .back {
-    margin-bottom: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
     padding: 0;
     border: 0;
     background: transparent;
     color: var(--muted);
     font-size: 12px;
+    font-weight: 600;
 }
 
 .back:hover {
     color: white;
 }
 
-.map-title {
+.map-header {
+    position: relative;
+    overflow: hidden;
+    min-height: 210px;
+    display: flex;
+    align-items: end;
     margin-bottom: 30px;
+    padding: 35px;
+    border: 1px solid var(--border);
+    background: var(--panel);
 }
 
-.map-title h1 {
-    margin: 0 0 7px;
+.map-header-bg {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    opacity: .28;
+}
+
+.map-header-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #08090c, rgba(8,9,12,.55), #08090c);
+}
+
+.map-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.map-label {
+    margin-bottom: 8px;
+    color: var(--red);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.map-header h1 {
+    margin: 0 0 8px;
     font-size: 42px;
     letter-spacing: -2px;
 }
 
-.map-title p {
+.map-header p {
     margin: 0;
-    color: var(--muted);
+    color: #9a9fa8;
     font-size: 12px;
 }
 
-.controls {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid var(--border);
+.side-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 18px;
 }
 
-.control {
-    padding: 12px 17px;
-    border: 0;
-    border-bottom: 2px solid transparent;
-    background: transparent;
+.side-tab {
+    padding: 15px;
+    border: 1px solid var(--border);
+    background: var(--panel);
     color: var(--muted);
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
+    transition: .15s ease;
 }
 
-.control:hover {
+.side-tab:hover {
+    border-color: #4a505b;
     color: white;
 }
 
-.control.active {
-    border-bottom-color: var(--red);
+.side-tab.active {
+    border-color: var(--red);
+    background: rgba(255,70,85,.07);
     color: white;
 }
 
-.sites {
+.site-tabs {
     display: flex;
     gap: 6px;
     margin-bottom: 25px;
 }
 
-.site {
-    min-width: 42px;
-    padding: 8px 14px;
+.site-tab {
+    min-width: 48px;
+    padding: 9px 15px;
     border: 1px solid var(--border);
     border-radius: 5px;
     background: var(--panel);
     color: var(--muted);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
-.site:hover,
-.site.active {
-    background: var(--panel2);
-    border-color: #4b505b;
+.site-tab:hover,
+.site-tab.active {
+    border-color: #4b515c;
+    background: var(--panel-hover);
     color: white;
 }
 
@@ -408,20 +428,21 @@ button {
     border-color: #414650;
 }
 
-.lineup-preview {
-    height: 160px;
+.lineup-image {
+    height: 170px;
     display: grid;
     place-items: center;
     background: #15181e;
     color: #555b66;
     font-size: 9px;
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-.lineup-preview span {
-    padding: 7px 10px;
-    border: 1px solid #373c46;
+.lineup-image span {
+    padding: 8px 11px;
+    border: 1px solid #383d47;
 }
 
 .lineup-body {
@@ -438,15 +459,15 @@ button {
     padding: 4px 7px;
     border-radius: 3px;
     background: #1b1e24;
-    color: #adb2bb;
+    color: #aeb3bc;
     font-size: 9px;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
 }
 
 .tag.red {
     background: rgba(255,70,85,.1);
-    color: #ff6875;
+    color: #ff6976;
 }
 
 .lineup h3 {
@@ -474,33 +495,30 @@ button {
 }
 
 .view:hover {
-    background: var(--red);
     border-color: var(--red);
+    background: var(--red);
 }
 
-@media (max-width: 950px) {
-    .sidebar {
-        width: 66px;
+.empty {
+    padding: 60px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+
+    .topbar {
+        padding: 0 20px;
     }
 
-    .brand {
-        justify-content: center;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .brand-name,
-    .nav-title,
-    .nav-button span {
+    .top-link {
         display: none;
     }
 
-    .nav-button {
-        justify-content: center;
-    }
-
-    .main {
-        margin-left: 66px;
+    main {
+        padding: 28px 20px 60px;
     }
 
     .maps,
@@ -509,26 +527,33 @@ button {
     }
 }
 
-@media (max-width: 620px) {
-    .topbar {
-        padding: 0 18px;
+@media (max-width: 600px) {
+
+    .logo-text {
+        display: none;
     }
 
     .search {
-        width: 150px;
-    }
-
-    .content {
-        padding: 28px 18px 60px;
+        width: 180px;
     }
 
     .hero {
-        padding: 30px;
+        min-height: 300px;
+        padding: 32px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+        letter-spacing: -2px;
     }
 
     .maps,
     .lineup-grid {
         grid-template-columns: 1fr;
+    }
+
+    .side-tabs {
+        grid-template-columns: 1fr 1fr;
     }
 }
 </style>
@@ -537,63 +562,35 @@ button {
 
 <body>
 
-<aside class="sidebar">
-
-```
-<div class="brand">
-    <div class="brand-icon">B</div>
-    <div class="brand-name">Brim<span>Lineups</span></div>
-</div>
-
-<div class="nav-title">Navigation</div>
-
-<button class="nav-button active" onclick="goHome()">
-    <div class="nav-icon">⌂</div>
-    <span>All Maps</span>
-</button>
-
-<div class="nav-title">Sides</div>
-
-<button class="nav-button" onclick="showSide('Attack')">
-    <div class="nav-icon">⚔</div>
-    <span>Attack</span>
-</button>
-
-<button class="nav-button" onclick="showSide('Defense')">
-    <div class="nav-icon">◈</div>
-    <span>Defense</span>
-</button>
-
-<div class="nav-title">Agent</div>
-
-<button class="nav-button active">
-    <div class="nav-icon">B</div>
-    <span>Brimstone</span>
-</button>
-```
-
-</aside>
-
-<div class="main">
-
 <header class="topbar">
 
 ```
-<div class="breadcrumb">
-    BrimLineups / <strong id="crumb">Maps</strong>
+<div class="logo" onclick="goHome()">
+    <div class="logo-mark">B</div>
+    <div class="logo-text">
+        Brim<span>Lineups</span>
+    </div>
 </div>
 
-<input
-    class="search"
-    id="search"
-    type="text"
-    placeholder="Search maps..."
->
+<div class="top-right">
+
+    <div class="top-link">
+        Brimstone Lineup Database
+    </div>
+
+    <input
+        id="search"
+        class="search"
+        type="text"
+        placeholder="Search maps..."
+    >
+
+</div>
 ```
 
 </header>
 
-<div class="content">
+<main>
 
 <section id="home">
 
@@ -607,119 +604,121 @@ button {
         </div>
 
         <h1>
-            Lineups.<br>
-            Made simple.
+            BrimLineups
         </h1>
 
         <p>
-            Find Brimstone lineups for every map, site and side.
-            Built for quick access when you need them.
+            A simple collection of Brimstone lineups for every map.
+            Find the spot, learn the lineup, and get back into your game.
         </p>
 
     </div>
 
 </div>
 
-<div class="section-header">
-    <h2>Maps</h2>
-    <span>12 maps</span>
+<div class="section-head">
+
+    <h2>Choose a map</h2>
+
+    <p>12 maps</p>
+
 </div>
 
 <div class="maps">
 
-    <div class="map-card" onclick="openMap('Abyss')">
+    <div class="map-card" data-map="Abyss" onclick="openMap('Abyss')">
         <div class="map-image" style="background-image:url('abyss.png')"></div>
         <div class="map-info">
             <h3>Abyss</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Ascent')">
+    <div class="map-card" data-map="Ascent" onclick="openMap('Ascent')">
         <div class="map-image" style="background-image:url('ascent.png')"></div>
         <div class="map-info">
             <h3>Ascent</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Bind')">
+    <div class="map-card" data-map="Bind" onclick="openMap('Bind')">
         <div class="map-image" style="background-image:url('bind.png')"></div>
         <div class="map-info">
             <h3>Bind</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Breeze')">
+    <div class="map-card" data-map="Breeze" onclick="openMap('Breeze')">
         <div class="map-image" style="background-image:url('breeze.png')"></div>
         <div class="map-info">
             <h3>Breeze</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Corrode')">
+    <div class="map-card" data-map="Corrode" onclick="openMap('Corrode')">
         <div class="map-image" style="background-image:url('corrode.png')"></div>
         <div class="map-info">
             <h3>Corrode</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Fracture')">
+    <div class="map-card" data-map="Fracture" onclick="openMap('Fracture')">
         <div class="map-image" style="background-image:url('fracture.png')"></div>
         <div class="map-info">
             <h3>Fracture</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Haven')">
+    <div class="map-card" data-map="Haven" onclick="openMap('Haven')">
         <div class="map-image" style="background-image:url('haven.png')"></div>
         <div class="map-info">
             <h3>Haven</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Icebox')">
+    <div class="map-card" data-map="Icebox" onclick="openMap('Icebox')">
         <div class="map-image" style="background-image:url('icebox.png')"></div>
         <div class="map-info">
             <h3>Icebox</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Lotus')">
+    <div class="map-card" data-map="Lotus" onclick="openMap('Lotus')">
         <div class="map-image" style="background-image:url('lotus.png')"></div>
         <div class="map-info">
             <h3>Lotus</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Pearl')">
+    <div class="map-card" data-map="Pearl" onclick="openMap('Pearl')">
         <div class="map-image" style="background-image:url('pearl.png')"></div>
         <div class="map-info">
             <h3>Pearl</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Split')">
+    <div class="map-card" data-map="Split" onclick="openMap('Split')">
         <div class="map-image" style="background-image:url('split.png')"></div>
         <div class="map-info">
             <h3>Split</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
-    <div class="map-card" onclick="openMap('Sunset')">
+    <div class="map-card" data-map="Sunset" onclick="openMap('Sunset')">
         <div class="map-image" style="background-image:url('sunset.png')"></div>
         <div class="map-info">
             <h3>Sunset</h3>
-            <p>Brimstone lineups</p>
+            <span>Brimstone lineups</span>
         </div>
     </div>
 
@@ -728,44 +727,82 @@ button {
 
 </section>
 
-<section id="mapPage">
+<section id="map-page">
 
 ```
 <button class="back" onclick="goHome()">
     ← Back to maps
 </button>
 
-<div class="map-title">
-    <h1 id="mapTitle">Ascent</h1>
-    <p>Brimstone lineups</p>
+<div class="map-header">
+
+    <div
+        id="mapHeaderBackground"
+        class="map-header-bg">
+    </div>
+
+    <div class="map-header-content">
+
+        <div class="map-label">
+            Brimstone · Lineups
+        </div>
+
+        <h1 id="mapTitle">
+            Ascent
+        </h1>
+
+        <p>
+            Select a side and site to find the lineup you need.
+        </p>
+
+    </div>
+
 </div>
 
-<div class="controls">
+<div class="side-tabs">
 
-    <button class="control active" onclick="setSide(this)">
-        Attack
+    <button
+        class="side-tab active"
+        onclick="selectSide(this, 'Attack')">
+        ⚔ Attack
     </button>
 
-    <button class="control" onclick="setSide(this)">
-        Defense
+    <button
+        class="side-tab"
+        onclick="selectSide(this, 'Defense')">
+        ◈ Defense
     </button>
 
 </div>
 
-<div class="sites">
+<div class="site-tabs">
 
-    <button class="site active">A</button>
-    <button class="site">B</button>
-    <button class="site">C</button>
+    <button
+        class="site-tab active"
+        onclick="selectSite(this, 'A')">
+        A
+    </button>
+
+    <button
+        class="site-tab"
+        onclick="selectSite(this, 'B')">
+        B
+    </button>
+
+    <button
+        class="site-tab"
+        onclick="selectSite(this, 'C')">
+        C
+    </button>
 
 </div>
 
-<div class="lineup-grid">
+<div id="lineups" class="lineup-grid">
 
     <div class="lineup">
 
-        <div class="lineup-preview">
-            <span>Lineup image</span>
+        <div class="lineup-image">
+            <span>Lineup screenshot</span>
         </div>
 
         <div class="lineup-body">
@@ -778,7 +815,7 @@ button {
             <h3>A Main → Default</h3>
 
             <p>
-                Default plant denial from A Main.
+                Default plant denial lineup.
             </p>
 
             <button class="view">
@@ -791,8 +828,8 @@ button {
 
     <div class="lineup">
 
-        <div class="lineup-preview">
-            <span>Lineup image</span>
+        <div class="lineup-image">
+            <span>Lineup screenshot</span>
         </div>
 
         <div class="lineup-body">
@@ -805,7 +842,7 @@ button {
             <h3>A Main → Hell</h3>
 
             <p>
-                Clear or deny players hiding in Hell.
+                Lineup for denying the Hell plant.
             </p>
 
             <button class="view">
@@ -818,8 +855,8 @@ button {
 
     <div class="lineup">
 
-        <div class="lineup-preview">
-            <span>Lineup image</span>
+        <div class="lineup-image">
+            <span>Lineup screenshot</span>
         </div>
 
         <div class="lineup-body">
@@ -848,83 +885,114 @@ button {
 
 </section>
 
-</div>
-
-</div>
+</main>
 
 <script>
 
 const home = document.getElementById("home");
-const mapPage = document.getElementById("mapPage");
+const mapPage = document.getElementById("map-page");
 const mapTitle = document.getElementById("mapTitle");
-const crumb = document.getElementById("crumb");
+const mapHeaderBackground = document.getElementById("mapHeaderBackground");
+
+let currentMap = "";
+let currentSide = "Attack";
+let currentSite = "A";
+
+const maps = {
+    Abyss: "abyss.png",
+    Ascent: "ascent.png",
+    Bind: "bind.png",
+    Breeze: "breeze.png",
+    Corrode: "corrode.png",
+    Fracture: "fracture.png",
+    Haven: "haven.png",
+    Icebox: "icebox.png",
+    Lotus: "lotus.png",
+    Pearl: "pearl.png",
+    Split: "split.png",
+    Sunset: "sunset.png"
+};
 
 function openMap(map) {
 
-    home.classList.add("hide");
-    mapPage.classList.add("show");
+    currentMap = map;
+
+    home.classList.add("hidden");
+    mapPage.classList.add("active");
 
     mapTitle.textContent = map;
-    crumb.textContent = map;
+
+    mapHeaderBackground.style.backgroundImage =
+        `url('${maps[map]}')`;
 
     window.scrollTo(0, 0);
+
 }
 
 function goHome() {
 
-    mapPage.classList.remove("show");
-    home.classList.remove("hide");
+    mapPage.classList.remove("active");
+    home.classList.remove("hidden");
 
-    crumb.textContent = "Maps";
+    document.getElementById("search").value = "";
+
+    document.querySelectorAll(".map-card").forEach(card => {
+        card.style.display = "";
+    });
 
     window.scrollTo(0, 0);
+
 }
 
-function setSide(button) {
+function selectSide(button, side) {
 
-    document.querySelectorAll(".control").forEach(control => {
-        control.classList.remove("active");
+    currentSide = side;
+
+    document.querySelectorAll(".side-tab").forEach(tab => {
+        tab.classList.remove("active");
     });
 
     button.classList.add("active");
+
+    updateLineups();
+
 }
 
-function showSide(side) {
+function selectSite(button, site) {
 
-    home.classList.add("hide");
-    mapPage.classList.add("show");
+    currentSite = site;
 
-    mapTitle.textContent = side + " lineups";
-    crumb.textContent = side;
-
-    window.scrollTo(0, 0);
-}
-
-document.querySelectorAll(".site").forEach(site => {
-
-    site.addEventListener("click", () => {
-
-        document.querySelectorAll(".site").forEach(s => {
-            s.classList.remove("active");
-        });
-
-        site.classList.add("active");
-
+    document.querySelectorAll(".site-tab").forEach(tab => {
+        tab.classList.remove("active");
     });
 
-});
+    button.classList.add("active");
 
-document.getElementById("search").addEventListener("input", function () {
+    updateLineups();
+
+}
+
+function updateLineups() {
+
+    console.log(
+        currentMap,
+        currentSide,
+        currentSite
+    );
+
+}
+
+document.getElementById("search").addEventListener("input", function() {
 
     const query = this.value.toLowerCase();
 
     document.querySelectorAll(".map-card").forEach(card => {
 
-        const name =
-            card.querySelector("h3").textContent.toLowerCase();
+        const mapName =
+            card.dataset.map.toLowerCase();
 
         card.style.display =
-            name.includes(query) ? "" : "none";
+            mapName.includes(query) ? "" : "none";
 
     });
 
