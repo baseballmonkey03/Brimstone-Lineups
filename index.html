@@ -3,19 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BrimLineups</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 :root {
-    --bg: #0a0b0e;
-    --panel: #111318;
-    --panel-light: #17191f;
-    --border: #292d35;
-    --text: #ececef;
-    --muted: #858b95;
+    --bg: #0b0c0f;
+    --surface: #121419;
+    --surface2: #181a20;
+    --border: #292c33;
+    --text: #eeeeef;
+    --muted: #8d929c;
     --red: #ff4655;
 }
 
@@ -39,64 +38,63 @@ button {
     cursor: pointer;
 }
 
-button:focus {
-    outline: none;
+body.modal-open {
+    overflow: hidden;
 }
 
-/* HEADER */
+/* HOME */
 
 .header {
-    height: 62px;
+    height: 64px;
+    display: flex;
+    align-items: center;
     border-bottom: 1px solid var(--border);
     background: #0d0f12;
 }
 
 .header-inner {
-    width: 1100px;
-    max-width: calc(100% - 32px);
+    width: 1120px;
+    max-width: calc(100% - 40px);
     height: 100%;
     margin: auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 9px;
-    color: var(--text);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
 }
 
 .logo-mark {
-    width: 28px;
-    height: 28px;
+    width: 29px;
+    height: 29px;
     display: grid;
     place-items: center;
     background: var(--red);
     color: white;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 900;
 }
 
 .logo span {
     color: var(--red);
 }
 
-.header-map {
-    margin-left: auto;
-    color: #666b75;
-    font-size: 11px;
+.header-text {
+    color: #6d727b;
+    font-size: 10px;
 }
 
-/* HOME */
-
-.home {
-    width: 1100px;
-    max-width: calc(100% - 32px);
+.home-content {
+    width: 1120px;
+    max-width: calc(100% - 40px);
     margin: auto;
-    padding: 50px 0 70px;
+    padding: 52px 0 70px;
 }
 
 .intro {
@@ -105,9 +103,9 @@ button:focus {
 
 .intro h1 {
     margin: 0 0 8px;
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 600;
-    letter-spacing: -1.3px;
+    letter-spacing: -1.2px;
 }
 
 .intro p {
@@ -116,20 +114,20 @@ button:focus {
     font-size: 13px;
 }
 
-.maps-head {
+.maps-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 14px;
 }
 
-.maps-head h2 {
+.maps-header h2 {
     margin: 0;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
 }
 
-.maps-head span {
+.maps-header span {
     color: #666b74;
     font-size: 10px;
 }
@@ -142,16 +140,16 @@ button:focus {
 
 .map-card {
     position: relative;
-    height: 155px;
+    height: 150px;
     overflow: hidden;
     border: 1px solid var(--border);
-    background: var(--panel);
-    transition: border-color .18s, transform .18s;
+    background: var(--surface);
+    transition: transform .15s ease, border-color .15s ease;
 }
 
 .map-card:hover {
     transform: translateY(-2px);
-    border-color: #555b65;
+    border-color: #50555e;
 }
 
 .map-image {
@@ -159,7 +157,7 @@ button:focus {
     inset: 0;
     background-position: center;
     background-size: cover;
-    transition: transform .3s ease;
+    transition: transform .25s ease;
 }
 
 .map-card:hover .map-image {
@@ -173,26 +171,26 @@ button:focus {
     background: linear-gradient(
         to top,
         rgba(5, 6, 8, .95),
-        rgba(5, 6, 8, .08)
+        rgba(5, 6, 8, .12)
     );
 }
 
 .map-info {
     position: absolute;
     left: 16px;
-    bottom: 15px;
+    bottom: 14px;
     z-index: 2;
 }
 
 .map-info h3 {
     margin: 0 0 3px;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
 }
 
 .map-info p {
     margin: 0;
-    color: #9298a2;
+    color: #9499a2;
     font-size: 9px;
 }
 
@@ -211,26 +209,27 @@ button:focus {
 }
 
 .map-header {
-    height: 62px;
+    height: 64px;
+    display: flex;
+    align-items: center;
     border-bottom: 1px solid var(--border);
     background: #0d0f12;
 }
 
 .map-header-inner {
-    width: 1100px;
-    max-width: calc(100% - 32px);
-    height: 100%;
+    width: 1120px;
+    max-width: calc(100% - 40px);
     margin: auto;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
 }
 
 .back {
-    border: 0;
     padding: 0;
-    background: transparent;
-    color: #858b95;
+    border: 0;
+    background: none;
+    color: #7e838c;
     font-size: 12px;
 }
 
@@ -238,36 +237,36 @@ button:focus {
     color: white;
 }
 
-.header-divider {
+.divider {
     width: 1px;
-    height: 17px;
+    height: 18px;
     background: var(--border);
 }
 
 .current-map {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
 }
 
 .map-content {
-    width: 1100px;
-    max-width: calc(100% - 32px);
+    width: 1120px;
+    max-width: calc(100% - 40px);
     margin: auto;
-    padding: 36px 0 70px;
+    padding: 35px 0 70px;
 }
 
-.map-title {
+.map-top {
     margin-bottom: 25px;
 }
 
-.map-title h1 {
+.map-top h1 {
     margin: 0 0 5px;
-    font-size: 28px;
+    font-size: 27px;
     font-weight: 600;
-    letter-spacing: -1px;
+    letter-spacing: -.8px;
 }
 
-.map-title p {
+.map-top p {
     margin: 0;
     color: var(--muted);
     font-size: 12px;
@@ -283,11 +282,11 @@ button:focus {
 }
 
 .side-tab {
-    padding: 11px 18px;
+    padding: 10px 18px;
     border: 0;
     border-bottom: 2px solid transparent;
     background: transparent;
-    color: #747a84;
+    color: #787d86;
     font-size: 12px;
     font-weight: 600;
 }
@@ -301,7 +300,7 @@ button:focus {
     border-bottom-color: var(--red);
 }
 
-/* SITE */
+/* SITES */
 
 .site-tabs {
     display: flex;
@@ -310,87 +309,87 @@ button:focus {
 }
 
 .site-tab {
-    min-width: 42px;
-    padding: 8px 12px;
+    min-width: 40px;
+    padding: 7px 13px;
     border: 1px solid var(--border);
-    background: var(--panel);
-    color: #858a93;
+    background: var(--surface);
+    color: #858a92;
     font-size: 11px;
     font-weight: 600;
 }
 
 .site-tab:hover {
     color: white;
-    background: var(--panel-light);
+    background: var(--surface2);
 }
 
 .site-tab.active {
     color: white;
-    border-color: #4b515c;
-    background: var(--panel-light);
+    background: var(--surface2);
+    border-color: #4a4e56;
 }
 
-/* LINEUP */
+/* LINEUP CARD */
 
-.lineup-box {
+.lineup-card {
     max-width: 760px;
     border: 1px solid var(--border);
-    background: var(--panel);
+    background: var(--surface);
 }
 
-.lineup-box-head {
-    padding: 22px;
+.lineup-card-top {
+    padding: 20px;
     border-bottom: 1px solid var(--border);
 }
 
-.lineup-kind {
-    margin-bottom: 8px;
+.lineup-type {
+    margin-bottom: 7px;
     color: var(--red);
     font-size: 9px;
     font-weight: 700;
-    letter-spacing: .9px;
+    letter-spacing: .8px;
     text-transform: uppercase;
 }
 
-.lineup-box h2 {
+.lineup-card h2 {
     margin: 0 0 7px;
     font-size: 20px;
     font-weight: 600;
 }
 
-.lineup-box-description {
+.lineup-card-description {
     margin: 0;
     color: var(--muted);
     font-size: 12px;
     line-height: 1.6;
 }
 
-.lineup-box-bottom {
+.lineup-card-bottom {
     min-height: 58px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    padding: 13px 22px;
+    padding: 13px 20px;
 }
 
 .lineup-location {
-    color: #676d76;
+    color: #666c75;
     font-size: 10px;
 }
 
 .view-button {
-    border: 1px solid var(--border);
-    background: var(--panel-light);
-    color: #d6d8dc;
     padding: 9px 14px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: #d6d8dc;
     font-size: 10px;
     font-weight: 600;
 }
 
 .view-button:hover {
-    border-color: #555b65;
     color: white;
+    border-color: #555a63;
 }
 
 /* MODAL */
@@ -400,37 +399,37 @@ button:focus {
     inset: 0;
     z-index: 100;
     display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    background: rgba(0,0,0,.78);
+    padding: 20px;
+    background: rgba(0, 0, 0, .82);
 }
 
 .modal.active {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-window {
     width: 900px;
     max-width: 100%;
-    max-height: calc(100vh - 50px);
+    max-height: calc(100vh - 40px);
     overflow-y: auto;
     border: 1px solid var(--border);
-    background: #0f1116;
-    box-shadow: 0 25px 80px rgba(0,0,0,.5);
+    background: #0e1015;
 }
 
 .modal-header {
+    height: 58px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 20px;
+    padding: 0 18px;
     border-bottom: 1px solid var(--border);
 }
 
 .modal-header h2 {
     margin: 0;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -438,15 +437,13 @@ button:focus {
     width: 30px;
     height: 30px;
     border: 1px solid var(--border);
-    background: var(--panel);
-    color: #9197a0;
+    background: var(--surface);
+    color: #8b9098;
     font-size: 18px;
-    line-height: 1;
 }
 
 .close:hover {
     color: white;
-    border-color: #555b65;
 }
 
 .modal-content {
@@ -463,26 +460,29 @@ button:focus {
 
 .step-title {
     margin-bottom: 9px;
-    color: #d9dadd;
+    color: #d7d9dc;
     font-size: 12px;
     font-weight: 600;
 }
 
 .step-image {
     width: 100%;
-    min-height: 230px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #15171c;
     border: 1px solid var(--border);
-    background: #17191e;
-    color: #626872;
-    font-size: 10px;
 }
 
 .step-image img {
     width: 100%;
     display: block;
+}
+
+.step-placeholder {
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #626872;
+    font-size: 10px;
 }
 
 .step-comment {
@@ -493,7 +493,6 @@ button:focus {
 }
 
 .tip-step {
-    margin-top: 27px;
     padding-top: 22px;
     border-top: 1px solid var(--border);
 }
@@ -507,7 +506,7 @@ button:focus {
 }
 
 @media (max-width: 560px) {
-    .header-map {
+    .header-text {
         display: none;
     }
 
@@ -515,14 +514,14 @@ button:focus {
         grid-template-columns: 1fr;
     }
 
-    .home,
+    .home-content,
     .map-content,
     .header-inner,
     .map-header-inner {
         max-width: calc(100% - 24px);
     }
 
-    .lineup-box-bottom {
+    .lineup-card-bottom {
         align-items: flex-start;
         flex-direction: column;
     }
@@ -544,8 +543,6 @@ button:focus {
 
 <body>
 
-<!-- HOME -->
-
 <section id="home">
 
     <header class="header">
@@ -556,7 +553,7 @@ button:focus {
                 Brim<span>Lineups</span>
             </div>
 
-            <div class="header-map">
+            <div class="header-text">
                 Brimstone lineups
             </div>
 
@@ -564,7 +561,7 @@ button:focus {
     </header>
 
 
-    <main class="home">
+    <main class="home-content">
 
         <div class="intro">
             <h1>Brimstone lineups</h1>
@@ -575,7 +572,7 @@ button:focus {
         </div>
 
 
-        <div class="maps-head">
+        <div class="maps-header">
             <h2>Maps</h2>
             <span>12 maps</span>
         </div>
@@ -686,8 +683,6 @@ button:focus {
 </section>
 
 
-<!-- MAP PAGE -->
-
 <section id="mapPage">
 
     <header class="map-header">
@@ -698,7 +693,7 @@ button:focus {
                 ← Maps
             </button>
 
-            <div class="header-divider"></div>
+            <div class="divider"></div>
 
             <div class="current-map" id="currentMap">
                 Ascent
@@ -711,14 +706,14 @@ button:focus {
 
     <main class="map-content">
 
-        <div class="map-title">
+        <div class="map-top">
 
             <h1 id="mapTitle">
                 Ascent
             </h1>
 
             <p>
-                Choose a side, then choose a site.
+                Pick a side, then choose a site.
             </p>
 
         </div>
@@ -744,11 +739,11 @@ button:focus {
         <div class="site-tabs" id="siteTabs"></div>
 
 
-        <div class="lineup-box">
+        <div class="lineup-card">
 
-            <div class="lineup-box-head">
+            <div class="lineup-card-top">
 
-                <div class="lineup-kind">
+                <div class="lineup-type">
                     Brimstone · Incendiary
                 </div>
 
@@ -757,7 +752,7 @@ button:focus {
                 </h2>
 
                 <p
-                    class="lineup-box-description"
+                    class="lineup-card-description"
                     id="lineupDescription">
                     Default plant lineup.
                 </p>
@@ -765,7 +760,7 @@ button:focus {
             </div>
 
 
-            <div class="lineup-box-bottom">
+            <div class="lineup-card-bottom">
 
                 <div
                     class="lineup-location"
@@ -788,8 +783,6 @@ button:focus {
 </section>
 
 
-<!-- LINEUP MODAL -->
-
 <div class="modal" id="lineupModal">
 
     <div class="modal-window">
@@ -797,7 +790,7 @@ button:focus {
         <div class="modal-header">
 
             <h2 id="modalTitle">
-                A Site → Default
+                Ascent A Site → Default
             </h2>
 
             <button
@@ -818,21 +811,24 @@ button:focus {
                 </div>
 
                 <div class="step-image">
-                    <span id="standPlaceholder">
-                        Stand screenshot goes here
-                    </span>
+
+                    <div
+                        class="step-placeholder"
+                        id="standPlaceholder">
+                        Stand screenshot
+                    </div>
 
                     <img
                         id="standImage"
                         src=""
-                        alt=""
+                        alt="Where to stand"
                         style="display:none;">
+
                 </div>
 
                 <p
                     class="step-comment"
                     id="standComment">
-                    Add your explanation for where to stand here.
                 </p>
 
             </div>
@@ -845,21 +841,24 @@ button:focus {
                 </div>
 
                 <div class="step-image">
-                    <span id="aimPlaceholder">
-                        Aim screenshot goes here
-                    </span>
+
+                    <div
+                        class="step-placeholder"
+                        id="aimPlaceholder">
+                        Aim screenshot
+                    </div>
 
                     <img
                         id="aimImage"
                         src=""
-                        alt=""
+                        alt="Where to aim"
                         style="display:none;">
+
                 </div>
 
                 <p
                     class="step-comment"
                     id="aimComment">
-                    Add your explanation for where to aim here.
                 </p>
 
             </div>
@@ -875,14 +874,16 @@ button:focus {
 
                 <div class="step-image">
 
-                    <span id="tipPlaceholder">
-                        Tip screenshot goes here
-                    </span>
+                    <div
+                        class="step-placeholder"
+                        id="tipPlaceholder">
+                        Tip screenshot
+                    </div>
 
                     <img
                         id="tipImage"
                         src=""
-                        alt=""
+                        alt="Lineup tip"
                         style="display:none;">
 
                 </div>
@@ -890,7 +891,6 @@ button:focus {
                 <p
                     class="step-comment"
                     id="tipComment">
-                    Add your tip explanation here.
                 </p>
 
             </div>
@@ -903,76 +903,6 @@ button:focus {
 
 
 <script>
-
-/*
-    MAP SITES
-
-    These are the actual sites available on each map.
-*/
-
-const mapSites = {
-    Abyss: ["A", "B"],
-    Ascent: ["A", "B"],
-    Bind: ["A", "B"],
-    Breeze: ["A", "B"],
-    Corrode: ["A", "B", "C"],
-    Fracture: ["A", "B"],
-    Haven: ["A", "B", "C"],
-    Icebox: ["A", "B"],
-    Lotus: ["A", "B", "C"],
-    Pearl: ["A", "B"],
-    Split: ["A", "B"],
-    Sunset: ["A", "B"]
-};
-
-
-/*
-    MAP IMAGES
-*/
-
-const mapImages = {
-    Abyss: "abyss.png",
-    Ascent: "ascent.png",
-    Bind: "bind.png",
-    Breeze: "breeze.png",
-    Corrode: "corrode.png",
-    Fracture: "fracture.png",
-    Haven: "haven.png",
-    Icebox: "icebox.png",
-    Lotus: "lotus.png",
-    Pearl: "pearl.png",
-    Split: "split.png",
-    Sunset: "sunset.png"
-};
-
-
-/*
-    LINEUPS
-
-    Later, this is where we will put your real
-    screenshot filenames and comments.
-
-    A lineup can have:
-    - stand image + comment
-    - aim image + comment
-    - optional tip image + comment
-*/
-
-const lineups = {};
-
-
-/*
-    CURRENT SELECTION
-*/
-
-let currentMap = "Ascent";
-let currentSide = "Attack";
-let currentSite = "A";
-
-
-/*
-    ELEMENTS
-*/
 
 const home = document.getElementById("home");
 const mapPage = document.getElementById("mapPage");
@@ -987,7 +917,6 @@ const lineupDescription = document.getElementById("lineupDescription");
 const lineupLocation = document.getElementById("lineupLocation");
 
 const modal = document.getElementById("lineupModal");
-
 const modalTitle = document.getElementById("modalTitle");
 
 const standImage = document.getElementById("standImage");
@@ -1005,9 +934,59 @@ const tipComment = document.getElementById("tipComment");
 const tipSection = document.getElementById("tipSection");
 
 
-/*
-    OPEN MAP
-*/
+const mapSites = {
+    Abyss: ["A", "B"],
+    Ascent: ["A", "B"],
+    Bind: ["A", "B"],
+    Breeze: ["A", "B"],
+    Corrode: ["A", "B", "C"],
+    Fracture: ["A", "B"],
+    Haven: ["A", "B", "C"],
+    Icebox: ["A", "B"],
+    Lotus: ["A", "B", "C"],
+    Pearl: ["A", "B"],
+    Split: ["A", "B"],
+    Sunset: ["A", "B"]
+};
+
+
+const lineups = {
+
+    "Ascent_Attack_A": {
+        title: "A Main → Default",
+        description: "Default plant lineup.",
+
+        standImage: "lineups/ascent/ascent_a_stand.png",
+        standComment: "Stand in the spot shown in the screenshot.",
+
+        aimImage: "lineups/ascent/ascent_a_aim.png",
+        aimComment: "Aim at the spot shown in the screenshot.",
+
+        tipImage: "lineups/ascent/ascent_a_tip.png",
+        tipComment: "Follow the tip shown in the screenshot."
+    },
+
+    "Ascent_Attack_B": {
+        title: "B Main → Default",
+        description: "Default B site lineup.",
+
+        standImage: "lineups/ascent/ascent_b_stand.png",
+        standComment: "Stand in the spot shown in the screenshot.",
+
+        aimImage: "lineups/ascent/ascent_b_aim.png",
+        aimComment: "Aim at the spot shown in the screenshot.",
+
+        tipImage: "lineups/ascent/ascent_b_tip.png",
+        tipComment: "Follow the tip shown in the screenshot."
+    }
+
+};
+
+
+let currentMap = "Ascent";
+let currentSide = "Attack";
+let currentSite = "A";
+
 
 function openMap(map) {
 
@@ -1021,12 +1000,7 @@ function openMap(map) {
     currentMapText.textContent = map;
 
     document.querySelectorAll(".side-tab").forEach((button, index) => {
-
-        button.classList.toggle(
-            "active",
-            index === 0
-        );
-
+        button.classList.toggle("active", index === 0);
     });
 
     createSiteTabs();
@@ -1034,10 +1008,6 @@ function openMap(map) {
     window.scrollTo(0, 0);
 }
 
-
-/*
-    RETURN HOME
-*/
 
 function goHome() {
 
@@ -1049,10 +1019,6 @@ function goHome() {
     window.scrollTo(0, 0);
 }
 
-
-/*
-    CREATE SITE BUTTONS
-*/
 
 function createSiteTabs() {
 
@@ -1086,10 +1052,6 @@ function createSiteTabs() {
 }
 
 
-/*
-    CHANGE SIDE
-*/
-
 function setSide(button, side) {
 
     currentSide = side;
@@ -1103,10 +1065,6 @@ function setSide(button, side) {
     updateLineup();
 }
 
-
-/*
-    CHANGE SITE
-*/
 
 function setSite(button, site) {
 
@@ -1122,11 +1080,7 @@ function setSite(button, site) {
 }
 
 
-/*
-    GET CURRENT LINEUP
-*/
-
-function getCurrentLineup() {
+function getLineup() {
 
     const key =
         currentMap +
@@ -1142,30 +1096,27 @@ function getCurrentLineup() {
             " Site → Default",
 
         description:
-            "Your lineup description will go here.",
+            "This lineup hasn't been added yet.",
 
         standImage: "",
         standComment:
-            "Add your stand screenshot and explanation here.",
+            "Screenshot coming soon.",
 
         aimImage: "",
         aimComment:
-            "Add your aim screenshot and explanation here.",
+            "Screenshot coming soon.",
 
         tipImage: "",
         tipComment:
-            "Add your tip and explanation here."
+            ""
+
     };
 }
 
 
-/*
-    UPDATE LINEUP CARD
-*/
-
 function updateLineup() {
 
-    const lineup = getCurrentLineup();
+    const lineup = getLineup();
 
     lineupTitle.textContent =
         lineup.title;
@@ -1182,79 +1133,61 @@ function updateLineup() {
 }
 
 
-/*
-    OPEN LINEUP MODAL
-*/
+function setStepImage(image, placeholder, source) {
+
+    if (source) {
+
+        image.src = source;
+        image.style.display = "block";
+        placeholder.style.display = "none";
+
+    } else {
+
+        image.style.display = "none";
+        placeholder.style.display = "flex";
+
+    }
+
+}
+
 
 function openLineup() {
 
-    const lineup = getCurrentLineup();
+    const lineup = getLineup();
 
     modalTitle.textContent =
+        currentMap +
+        " " +
         lineup.title;
 
-    /*
-        Stand image
-    */
+    setStepImage(
+        standImage,
+        standPlaceholder,
+        lineup.standImage
+    );
 
-    if (lineup.standImage) {
-
-        standImage.src = lineup.standImage;
-        standImage.style.display = "block";
-        standPlaceholder.style.display = "none";
-
-    } else {
-
-        standImage.style.display = "none";
-        standPlaceholder.style.display = "block";
-
-    }
+    setStepImage(
+        aimImage,
+        aimPlaceholder,
+        lineup.aimImage
+    );
 
     standComment.textContent =
         lineup.standComment;
-
-
-    /*
-        Aim image
-    */
-
-    if (lineup.aimImage) {
-
-        aimImage.src = lineup.aimImage;
-        aimImage.style.display = "block";
-        aimPlaceholder.style.display = "none";
-
-    } else {
-
-        aimImage.style.display = "none";
-        aimPlaceholder.style.display = "block";
-
-    }
 
     aimComment.textContent =
         lineup.aimComment;
 
 
-    /*
-        Optional tip
-    */
-
     if (lineup.tipImage || lineup.tipComment) {
 
         tipSection.style.display = "block";
 
-        if (lineup.tipImage) {
-
-            tipImage.src = lineup.tipImage;
-            tipImage.style.display = "block";
-            tipPlaceholder.style.display = "none";
-
-        } else {
-
-            tipImage.style.display = "none";
-            tipPlaceholder.style.display = "block";
-
-        }
+        setStepImage(
+            tipImage,
+            tipPlaceholder,
+            lineup.tipImage
+        );
 
         tipComment.textContent =
             lineup.tipComment;
@@ -1265,28 +1198,20 @@ function openLineup() {
 
     }
 
-    modal.classList.add("active");
 
-    document.body.style.overflow = "hidden";
+    modal.classList.add("active");
+    document.body.classList.add("modal-open");
+
 }
 
-
-/*
-    CLOSE LINEUP MODAL
-*/
 
 function closeLineup() {
 
     modal.classList.remove("active");
-
-    document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
 
 }
 
-
-/*
-    CLOSE MODAL BY CLICKING OUTSIDE
-*/
 
 modal.addEventListener("click", function(event) {
 
@@ -1297,10 +1222,6 @@ modal.addEventListener("click", function(event) {
 });
 
 
-/*
-    ESC KEY
-*/
-
 document.addEventListener("keydown", function(event) {
 
     if (event.key === "Escape") {
@@ -1309,10 +1230,6 @@ document.addEventListener("keydown", function(event) {
 
 });
 
-
-/*
-    START WITH ASCENT
-*/
 
 createSiteTabs();
 
