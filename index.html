@@ -9,18 +9,22 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+:root {
+    --bg: #0b0c0f;
+    --surface: #121419;
+    --surface2: #181a20;
+    --border: #292c33;
+    --text: #eeeeef;
+    --muted: #8d929c;
+    --red: #ff4655;
+}
+
 * {
     box-sizing: border-box;
 }
 
-:root {
-    --bg: #0b0d10;
-    --panel: #111419;
-    --panel-light: #171a20;
-    --line: #282c33;
-    --text: #e7e8ea;
-    --muted: #858a93;
-    --red: #ff4655;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -31,21 +35,18 @@ body {
 }
 
 button {
-    font-family: inherit;
+    font: inherit;
     cursor: pointer;
-}
-
-button:focus {
-    outline: none;
 }
 
 /* HOME */
 
-.home-header {
+.header {
     height: 64px;
-    border-bottom: 1px solid var(--line);
     display: flex;
     align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: #0d0f12;
 }
 
 .header-inner {
@@ -58,36 +59,50 @@ button:focus {
 }
 
 .logo {
-    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 15px;
     font-weight: 700;
-    letter-spacing: -.4px;
+    letter-spacing: -.3px;
+}
+
+.logo-mark {
+    width: 29px;
+    height: 29px;
+    display: grid;
+    place-items: center;
+    background: var(--red);
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
 }
 
 .logo span {
     color: var(--red);
 }
 
-.header-right {
-    color: #70757e;
-    font-size: 11px;
+.header-text {
+    color: #6d727b;
+    font-size: 10px;
 }
 
 .home-content {
     width: 1120px;
     max-width: calc(100% - 40px);
     margin: auto;
-    padding: 55px 0 70px;
+    padding: 52px 0 70px;
 }
 
 .intro {
-    margin-bottom: 40px;
+    margin-bottom: 38px;
 }
 
 .intro h1 {
     margin: 0 0 8px;
     font-size: 32px;
     font-weight: 600;
-    letter-spacing: -1px;
+    letter-spacing: -1.2px;
 }
 
 .intro p {
@@ -98,8 +113,8 @@ button:focus {
 
 .maps-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 14px;
 }
 
@@ -110,31 +125,29 @@ button:focus {
 }
 
 .maps-header span {
-    color: #666b73;
-    font-size: 11px;
+    color: #666b74;
+    font-size: 10px;
 }
 
 .maps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 12px;
 }
 
 .map-card {
-    height: 150px;
     position: relative;
+    height: 150px;
     overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--panel);
+    border: 1px solid var(--border);
+    background: var(--surface);
     cursor: pointer;
+    transition: transform .15s ease, border-color .15s ease;
 }
 
 .map-card:hover {
-    border-color: #4a4e56;
-}
-
-.map-card:hover .map-image {
-    transform: scale(1.025);
+    transform: translateY(-2px);
+    border-color: #50555e;
 }
 
 .map-image {
@@ -145,34 +158,38 @@ button:focus {
     transition: transform .25s ease;
 }
 
-.map-image:after {
+.map-card:hover .map-image {
+    transform: scale(1.025);
+}
+
+.map-image::after {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(
         to top,
-        rgba(5,6,8,.96),
-        rgba(5,6,8,.15)
+        rgba(5, 6, 8, .95),
+        rgba(5, 6, 8, .12)
     );
 }
 
-.map-name {
+.map-info {
     position: absolute;
-    left: 15px;
-    bottom: 13px;
+    left: 16px;
+    bottom: 14px;
     z-index: 2;
 }
 
-.map-name h3 {
-    margin: 0;
+.map-info h3 {
+    margin: 0 0 3px;
     font-size: 17px;
     font-weight: 600;
 }
 
-.map-name p {
-    margin: 4px 0 0;
-    color: #92969e;
-    font-size: 10px;
+.map-info p {
+    margin: 0;
+    color: #9499a2;
+    font-size: 9px;
 }
 
 /* MAP PAGE */
@@ -185,11 +202,16 @@ button:focus {
     display: block;
 }
 
+#home.hidden {
+    display: none;
+}
+
 .map-header {
     height: 64px;
-    border-bottom: 1px solid var(--line);
     display: flex;
     align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: #0d0f12;
 }
 
 .map-header-inner {
@@ -198,14 +220,14 @@ button:focus {
     margin: auto;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
 }
 
 .back {
+    padding: 0;
     border: 0;
     background: none;
-    padding: 0;
-    color: #777c85;
+    color: #7e838c;
     font-size: 12px;
 }
 
@@ -216,7 +238,7 @@ button:focus {
 .divider {
     width: 1px;
     height: 18px;
-    background: var(--line);
+    background: var(--border);
 }
 
 .current-map {
@@ -232,14 +254,14 @@ button:focus {
 }
 
 .map-top {
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 }
 
 .map-top h1 {
     margin: 0 0 5px;
     font-size: 27px;
     font-weight: 600;
-    letter-spacing: -.7px;
+    letter-spacing: -.8px;
 }
 
 .map-top p {
@@ -248,21 +270,21 @@ button:focus {
     font-size: 12px;
 }
 
-/* SIDE */
+/* SIDE TABS */
 
 .side-tabs {
     display: flex;
     gap: 2px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--border);
     margin-bottom: 15px;
 }
 
 .side-tab {
+    padding: 10px 18px;
     border: 0;
     border-bottom: 2px solid transparent;
-    background: none;
-    padding: 10px 18px;
-    color: #777c84;
+    background: transparent;
+    color: #787d86;
     font-size: 12px;
     font-weight: 600;
 }
@@ -272,11 +294,11 @@ button:focus {
 }
 
 .side-tab.active {
-    border-bottom-color: var(--red);
     color: white;
+    border-bottom-color: var(--red);
 }
 
-/* SITES */
+/* SITE TABS */
 
 .site-tabs {
     display: flex;
@@ -286,23 +308,23 @@ button:focus {
 
 .site-tab {
     min-width: 40px;
-    border: 1px solid var(--line);
-    background: var(--panel);
-    color: #858a92;
     padding: 7px 13px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: #858a92;
     font-size: 11px;
     font-weight: 600;
 }
 
 .site-tab:hover {
     color: white;
-    background: var(--panel-light);
+    background: var(--surface2);
 }
 
 .site-tab.active {
-    background: var(--panel-light);
-    border-color: #4a4e55;
     color: white;
+    background: var(--surface2);
+    border-color: #4a4e56;
 }
 
 /* LINEUPS */
@@ -314,38 +336,41 @@ button:focus {
 }
 
 .lineup {
-    border: 1px solid var(--line);
-    background: var(--panel);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color .15s ease, transform .15s ease;
 }
 
 .lineup:hover {
+    transform: translateY(-2px);
     border-color: #41454d;
 }
 
-.lineup-image {
+.lineup-preview {
     height: 165px;
-    background: #17191e;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #17191e;
     color: #626770;
     font-size: 10px;
 }
 
-.lineup-image span {
-    border: 1px solid #33373e;
+.lineup-preview span {
     padding: 6px 9px;
+    border: 1px solid #34373e;
 }
 
 .lineup-info {
     padding: 14px;
 }
 
-.lineup-agent {
+.lineup-type {
+    margin-bottom: 7px;
     color: var(--red);
     font-size: 9px;
     font-weight: 600;
-    margin-bottom: 7px;
 }
 
 .lineup-info h3 {
@@ -357,22 +382,22 @@ button:focus {
 .lineup-info p {
     margin: 0 0 13px;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 10px;
     line-height: 1.5;
 }
 
 .view {
-    border: 1px solid var(--line);
-    background: var(--panel-light);
-    color: #cfd1d5;
     width: 100%;
     padding: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: #d9dadd;
     font-size: 10px;
     font-weight: 600;
 }
 
 .view:hover {
-    background: #202329;
+    border-color: #555a63;
     color: white;
 }
 
@@ -386,6 +411,10 @@ button:focus {
 }
 
 @media (max-width: 560px) {
+    .header-right {
+        display: none;
+    }
+
     .maps,
     .lineup-grid {
         grid-template-columns: 1fr;
@@ -395,11 +424,11 @@ button:focus {
     .map-content,
     .header-inner,
     .map-header-inner {
-        max-width: calc(100% - 24px);
+        max-width: calc(100% - 28px);
     }
 
-    .header-right {
-        display: none;
+    .intro h1 {
+        font-size: 28px;
     }
 }
 </style>
@@ -408,43 +437,55 @@ button:focus {
 
 <body>
 
-<!-- HOME -->
+<header class="header">
+
+```
+<div class="header-inner">
+
+    <div class="logo">
+        <div class="logo-mark">B</div>
+        Brim<span>Lineups</span>
+    </div>
+
+    <div class="header-text">
+        Brimstone lineups
+    </div>
+
+</div>
+```
+
+</header>
 
 <section id="home">
 
 ```
-<header class="home-header">
-    <div class="header-inner">
-        <div class="logo">
-            Brim<span>Lineups</span>
-        </div>
-
-        <div class="header-right">
-            Brimstone lineups
-        </div>
-    </div>
-</header>
-
 <main class="home-content">
 
     <div class="intro">
+
         <h1>Brimstone lineups</h1>
 
         <p>
             Pick a map to find lineups for attack and defense.
         </p>
+
     </div>
 
+
     <div class="maps-header">
+
         <h2>Maps</h2>
+
         <span>12 maps</span>
+
     </div>
+
 
     <div class="maps">
 
         <div class="map-card" onclick="openMap('Abyss')">
             <div class="map-image" style="background-image:url('abyss.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Abyss</h3>
                 <p>Lineups</p>
             </div>
@@ -452,7 +493,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Ascent')">
             <div class="map-image" style="background-image:url('ascent.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Ascent</h3>
                 <p>Lineups</p>
             </div>
@@ -460,7 +501,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Bind')">
             <div class="map-image" style="background-image:url('bind.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Bind</h3>
                 <p>Lineups</p>
             </div>
@@ -468,7 +509,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Breeze')">
             <div class="map-image" style="background-image:url('breeze.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Breeze</h3>
                 <p>Lineups</p>
             </div>
@@ -476,7 +517,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Corrode')">
             <div class="map-image" style="background-image:url('corrode.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Corrode</h3>
                 <p>Lineups</p>
             </div>
@@ -484,7 +525,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Fracture')">
             <div class="map-image" style="background-image:url('fracture.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Fracture</h3>
                 <p>Lineups</p>
             </div>
@@ -492,7 +533,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Haven')">
             <div class="map-image" style="background-image:url('haven.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Haven</h3>
                 <p>Lineups</p>
             </div>
@@ -500,7 +541,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Icebox')">
             <div class="map-image" style="background-image:url('icebox.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Icebox</h3>
                 <p>Lineups</p>
             </div>
@@ -508,7 +549,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Lotus')">
             <div class="map-image" style="background-image:url('lotus.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Lotus</h3>
                 <p>Lineups</p>
             </div>
@@ -516,7 +557,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Pearl')">
             <div class="map-image" style="background-image:url('pearl.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Pearl</h3>
                 <p>Lineups</p>
             </div>
@@ -524,7 +565,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Split')">
             <div class="map-image" style="background-image:url('split.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Split</h3>
                 <p>Lineups</p>
             </div>
@@ -532,7 +573,7 @@ button:focus {
 
         <div class="map-card" onclick="openMap('Sunset')">
             <div class="map-image" style="background-image:url('sunset.png')"></div>
-            <div class="map-name">
+            <div class="map-info">
                 <h3>Sunset</h3>
                 <p>Lineups</p>
             </div>
@@ -544,8 +585,6 @@ button:focus {
 ```
 
 </section>
-
-<!-- MAP PAGE -->
 
 <section id="mapPage">
 
@@ -560,7 +599,7 @@ button:focus {
 
         <div class="divider"></div>
 
-        <div class="current-map" id="headerMapName">
+        <div class="current-map" id="currentMap">
             Abyss
         </div>
 
@@ -578,7 +617,7 @@ button:focus {
         </h1>
 
         <p>
-            Brimstone lineups
+            Pick a side and site.
         </p>
 
     </div>
@@ -601,41 +640,21 @@ button:focus {
     </div>
 
 
-    <div class="site-tabs">
-
-        <button
-            class="site-tab active"
-            onclick="setSite(this, 'A')">
-            A
-        </button>
-
-        <button
-            class="site-tab"
-            onclick="setSite(this, 'B')">
-            B
-        </button>
-
-        <button
-            class="site-tab"
-            onclick="setSite(this, 'C')">
-            C
-        </button>
-
-    </div>
+    <div class="site-tabs" id="siteTabs"></div>
 
 
-    <div class="lineup-grid">
+    <div class="lineup-grid" id="lineupGrid">
 
         <div class="lineup">
 
-            <div class="lineup-image">
+            <div class="lineup-preview">
                 <span>Screenshot</span>
             </div>
 
             <div class="lineup-info">
 
-                <div class="lineup-agent">
-                    BRIMSTONE · INCENDIARY
+                <div class="lineup-type">
+                    INCENDIARY · ATTACK
                 </div>
 
                 <h3>A Main → Default</h3>
@@ -655,14 +674,14 @@ button:focus {
 
         <div class="lineup">
 
-            <div class="lineup-image">
+            <div class="lineup-preview">
                 <span>Screenshot</span>
             </div>
 
             <div class="lineup-info">
 
-                <div class="lineup-agent">
-                    BRIMSTONE · INCENDIARY
+                <div class="lineup-type">
+                    INCENDIARY · ATTACK
                 </div>
 
                 <h3>A Main → Hell</h3>
@@ -682,14 +701,14 @@ button:focus {
 
         <div class="lineup">
 
-            <div class="lineup-image">
+            <div class="lineup-preview">
                 <span>Screenshot</span>
             </div>
 
             <div class="lineup-info">
 
-                <div class="lineup-agent">
-                    BRIMSTONE · INCENDIARY
+                <div class="lineup-type">
+                    INCENDIARY · ATTACK
                 </div>
 
                 <h3>A Lobby → Generator</h3>
@@ -718,21 +737,22 @@ button:focus {
 const home = document.getElementById("home");
 const mapPage = document.getElementById("mapPage");
 const mapTitle = document.getElementById("mapTitle");
-const headerMapName = document.getElementById("headerMapName");
+const currentMapText = document.getElementById("currentMap");
+const siteTabs = document.getElementById("siteTabs");
 
-const mapImages = {
-    Abyss: "abyss.png",
-    Ascent: "ascent.png",
-    Bind: "bind.png",
-    Breeze: "breeze.png",
-    Corrode: "corrode.png",
-    Fracture: "fracture.png",
-    Haven: "haven.png",
-    Icebox: "icebox.png",
-    Lotus: "lotus.png",
-    Pearl: "pearl.png",
-    Split: "split.png",
-    Sunset: "sunset.png"
+const mapSites = {
+    Abyss: ["A", "B"],
+    Ascent: ["A", "B"],
+    Bind: ["A", "B"],
+    Breeze: ["A", "B"],
+    Corrode: ["A", "B", "C"],
+    Fracture: ["A", "B"],
+    Haven: ["A", "B", "C"],
+    Icebox: ["A", "B"],
+    Lotus: ["A", "B", "C"],
+    Pearl: ["A", "B"],
+    Split: ["A", "B"],
+    Sunset: ["A", "B"]
 };
 
 let currentMap = "Abyss";
@@ -744,25 +764,18 @@ function openMap(map) {
 
     currentMap = map;
     currentSide = "Attack";
-    currentSite = "A";
 
     home.classList.add("hidden");
     mapPage.classList.add("active");
 
     mapTitle.textContent = map;
-    headerMapName.textContent = map;
+    currentMapText.textContent = map;
 
-    document.querySelectorAll(".side-tab").forEach(tab => {
-        tab.classList.remove("active");
+    document.querySelectorAll(".side-tab").forEach((button, index) => {
+        button.classList.toggle("active", index === 0);
     });
 
-    document.querySelector(".side-tab").classList.add("active");
-
-    document.querySelectorAll(".site-tab").forEach(tab => {
-        tab.classList.remove("active");
-    });
-
-    document.querySelector(".site-tab").classList.add("active");
+    createSiteTabs();
 
     window.scrollTo(0, 0);
 }
@@ -774,6 +787,38 @@ function goHome() {
     home.classList.remove("hidden");
 
     window.scrollTo(0, 0);
+}
+
+
+function createSiteTabs() {
+
+    siteTabs.innerHTML = "";
+
+    const sites = mapSites[currentMap];
+
+    currentSite = sites[0];
+
+    sites.forEach((site, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "site-tab";
+
+        if (index === 0) {
+            button.classList.add("active");
+        }
+
+        button.textContent = site;
+
+        button.onclick = function() {
+            setSite(this, site);
+        };
+
+        siteTabs.appendChild(button);
+
+    });
+
+    updateLineups();
 }
 
 
@@ -808,8 +853,11 @@ function setSite(button, site) {
 function updateLineups() {
 
     console.log(
+        "Map:",
         currentMap,
+        "Side:",
         currentSide,
+        "Site:",
         currentSite
     );
 
@@ -819,3 +867,4 @@ function updateLineups() {
 
 </body>
 </html>
+```
