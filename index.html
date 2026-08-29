@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BrimLineups</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --bg: #0b0c0f;
-    --surface: #121419;
-    --surface2: #181a20;
-    --border: #292c33;
-    --text: #eeeeef;
-    --muted: #8d929c;
+    --bg: #0a0b0e;
+    --panel: #111318;
+    --panel-light: #17191f;
+    --border: #292d35;
+    --text: #ececef;
+    --muted: #858b95;
     --red: #ff4655;
 }
 
@@ -39,59 +39,64 @@ button {
     cursor: pointer;
 }
 
-/* HOME */
+button:focus {
+    outline: none;
+}
+
+/* HEADER */
 
 .header {
-    height: 64px;
-    display: flex;
-    align-items: center;
+    height: 62px;
     border-bottom: 1px solid var(--border);
     background: #0d0f12;
 }
 
 .header-inner {
-    width: 1120px;
-    max-width: calc(100% - 40px);
+    width: 1100px;
+    max-width: calc(100% - 32px);
+    height: 100%;
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 9px;
-    font-size: 15px;
+    color: var(--text);
+    font-size: 16px;
     font-weight: 700;
-    letter-spacing: -.3px;
 }
 
 .logo-mark {
-    width: 29px;
-    height: 29px;
+    width: 28px;
+    height: 28px;
     display: grid;
     place-items: center;
     background: var(--red);
     color: white;
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .logo span {
     color: var(--red);
 }
 
-.header-text {
-    color: #6d727b;
-    font-size: 10px;
+.header-map {
+    margin-left: auto;
+    color: #666b75;
+    font-size: 11px;
 }
 
-.home-content {
-    width: 1120px;
-    max-width: calc(100% - 40px);
+/* HOME */
+
+.home {
+    width: 1100px;
+    max-width: calc(100% - 32px);
     margin: auto;
-    padding: 52px 0 70px;
+    padding: 50px 0 70px;
 }
 
 .intro {
@@ -100,9 +105,9 @@ button {
 
 .intro h1 {
     margin: 0 0 8px;
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 600;
-    letter-spacing: -1.2px;
+    letter-spacing: -1.3px;
 }
 
 .intro p {
@@ -111,20 +116,20 @@ button {
     font-size: 13px;
 }
 
-.maps-header {
+.maps-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 14px;
 }
 
-.maps-header h2 {
+.maps-head h2 {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
 }
 
-.maps-header span {
+.maps-head span {
     color: #666b74;
     font-size: 10px;
 }
@@ -137,17 +142,16 @@ button {
 
 .map-card {
     position: relative;
-    height: 150px;
+    height: 155px;
     overflow: hidden;
     border: 1px solid var(--border);
-    background: var(--surface);
-    cursor: pointer;
-    transition: transform .15s ease, border-color .15s ease;
+    background: var(--panel);
+    transition: border-color .18s, transform .18s;
 }
 
 .map-card:hover {
     transform: translateY(-2px);
-    border-color: #50555e;
+    border-color: #555b65;
 }
 
 .map-image {
@@ -155,7 +159,7 @@ button {
     inset: 0;
     background-position: center;
     background-size: cover;
-    transition: transform .25s ease;
+    transition: transform .3s ease;
 }
 
 .map-card:hover .map-image {
@@ -169,26 +173,26 @@ button {
     background: linear-gradient(
         to top,
         rgba(5, 6, 8, .95),
-        rgba(5, 6, 8, .12)
+        rgba(5, 6, 8, .08)
     );
 }
 
 .map-info {
     position: absolute;
     left: 16px;
-    bottom: 14px;
+    bottom: 15px;
     z-index: 2;
 }
 
 .map-info h3 {
     margin: 0 0 3px;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
 }
 
 .map-info p {
     margin: 0;
-    color: #9499a2;
+    color: #9298a2;
     font-size: 9px;
 }
 
@@ -207,27 +211,26 @@ button {
 }
 
 .map-header {
-    height: 64px;
-    display: flex;
-    align-items: center;
+    height: 62px;
     border-bottom: 1px solid var(--border);
     background: #0d0f12;
 }
 
 .map-header-inner {
-    width: 1120px;
-    max-width: calc(100% - 40px);
+    width: 1100px;
+    max-width: calc(100% - 32px);
+    height: 100%;
     margin: auto;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 15px;
 }
 
 .back {
-    padding: 0;
     border: 0;
-    background: none;
-    color: #7e838c;
+    padding: 0;
+    background: transparent;
+    color: #858b95;
     font-size: 12px;
 }
 
@@ -235,42 +238,42 @@ button {
     color: white;
 }
 
-.divider {
+.header-divider {
     width: 1px;
-    height: 18px;
+    height: 17px;
     background: var(--border);
 }
 
 .current-map {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
 }
 
 .map-content {
-    width: 1120px;
-    max-width: calc(100% - 40px);
+    width: 1100px;
+    max-width: calc(100% - 32px);
     margin: auto;
-    padding: 35px 0 70px;
+    padding: 36px 0 70px;
 }
 
-.map-top {
+.map-title {
     margin-bottom: 25px;
 }
 
-.map-top h1 {
+.map-title h1 {
     margin: 0 0 5px;
-    font-size: 27px;
+    font-size: 28px;
     font-weight: 600;
-    letter-spacing: -.8px;
+    letter-spacing: -1px;
 }
 
-.map-top p {
+.map-title p {
     margin: 0;
     color: var(--muted);
     font-size: 12px;
 }
 
-/* SIDE TABS */
+/* SIDE */
 
 .side-tabs {
     display: flex;
@@ -280,11 +283,11 @@ button {
 }
 
 .side-tab {
-    padding: 10px 18px;
+    padding: 11px 18px;
     border: 0;
     border-bottom: 2px solid transparent;
     background: transparent;
-    color: #787d86;
+    color: #747a84;
     font-size: 12px;
     font-weight: 600;
 }
@@ -298,372 +301,481 @@ button {
     border-bottom-color: var(--red);
 }
 
-/* SITE TABS */
+/* SITE */
 
 .site-tabs {
     display: flex;
     gap: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .site-tab {
-    min-width: 40px;
-    padding: 7px 13px;
+    min-width: 42px;
+    padding: 8px 12px;
     border: 1px solid var(--border);
-    background: var(--surface);
-    color: #858a92;
+    background: var(--panel);
+    color: #858a93;
     font-size: 11px;
     font-weight: 600;
 }
 
 .site-tab:hover {
     color: white;
-    background: var(--surface2);
+    background: var(--panel-light);
 }
 
 .site-tab.active {
     color: white;
-    background: var(--surface2);
-    border-color: #4a4e56;
+    border-color: #4b515c;
+    background: var(--panel-light);
 }
 
-/* LINEUPS */
+/* LINEUP */
 
-.lineup-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
-
-.lineup {
-    overflow: hidden;
+.lineup-box {
+    max-width: 760px;
     border: 1px solid var(--border);
-    background: var(--surface);
-    transition: border-color .15s ease, transform .15s ease;
+    background: var(--panel);
 }
 
-.lineup:hover {
-    transform: translateY(-2px);
-    border-color: #41454d;
+.lineup-box-head {
+    padding: 22px;
+    border-bottom: 1px solid var(--border);
 }
 
-.lineup-preview {
-    height: 165px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #17191e;
-    color: #626770;
-    font-size: 10px;
-}
-
-.lineup-preview span {
-    padding: 6px 9px;
-    border: 1px solid #34373e;
-}
-
-.lineup-info {
-    padding: 14px;
-}
-
-.lineup-type {
-    margin-bottom: 7px;
+.lineup-kind {
+    margin-bottom: 8px;
     color: var(--red);
     font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .9px;
+    text-transform: uppercase;
+}
+
+.lineup-box h2 {
+    margin: 0 0 7px;
+    font-size: 20px;
     font-weight: 600;
 }
 
-.lineup-info h3 {
-    margin: 0 0 6px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.lineup-info p {
-    margin: 0 0 13px;
+.lineup-box-description {
+    margin: 0;
     color: var(--muted);
-    font-size: 10px;
-    line-height: 1.5;
+    font-size: 12px;
+    line-height: 1.6;
 }
 
-.view {
-    width: 100%;
-    padding: 8px;
+.lineup-box-bottom {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 13px 22px;
+}
+
+.lineup-location {
+    color: #676d76;
+    font-size: 10px;
+}
+
+.view-button {
     border: 1px solid var(--border);
-    background: var(--surface2);
-    color: #d9dadd;
+    background: var(--panel-light);
+    color: #d6d8dc;
+    padding: 9px 14px;
     font-size: 10px;
     font-weight: 600;
 }
 
-.view:hover {
-    border-color: #555a63;
+.view-button:hover {
+    border-color: #555b65;
     color: white;
 }
 
-/* RESPONSIVE */
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: rgba(0,0,0,.78);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-window {
+    width: 900px;
+    max-width: 100%;
+    max-height: calc(100vh - 50px);
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    background: #0f1116;
+    box-shadow: 0 25px 80px rgba(0,0,0,.5);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.close {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: #9197a0;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.close:hover {
+    color: white;
+    border-color: #555b65;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.step {
+    margin-bottom: 25px;
+}
+
+.step:last-child {
+    margin-bottom: 0;
+}
+
+.step-title {
+    margin-bottom: 9px;
+    color: #d9dadd;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.step-image {
+    width: 100%;
+    min-height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    background: #17191e;
+    color: #626872;
+    font-size: 10px;
+}
+
+.step-image img {
+    width: 100%;
+    display: block;
+}
+
+.step-comment {
+    margin: 9px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.tip-step {
+    margin-top: 27px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+/* MOBILE */
 
 @media (max-width: 850px) {
-    .maps,
-    .lineup-grid {
+    .maps {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 560px) {
-    .header-right {
+    .header-map {
         display: none;
     }
 
-    .maps,
-    .lineup-grid {
+    .maps {
         grid-template-columns: 1fr;
     }
 
-    .home-content,
+    .home,
     .map-content,
     .header-inner,
     .map-header-inner {
-        max-width: calc(100% - 28px);
+        max-width: calc(100% - 24px);
     }
 
-    .intro h1 {
-        font-size: 28px;
+    .lineup-box-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .view-button {
+        width: 100%;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-window {
+        max-height: calc(100vh - 20px);
     }
 }
 </style>
-
 </head>
 
 <body>
 
-<header class="header">
-
-```
-<div class="header-inner">
-
-    <div class="logo">
-        <div class="logo-mark">B</div>
-        Brim<span>Lineups</span>
-    </div>
-
-    <div class="header-text">
-        Brimstone lineups
-    </div>
-
-</div>
-```
-
-</header>
+<!-- HOME -->
 
 <section id="home">
 
-```
-<main class="home-content">
+    <header class="header">
+        <div class="header-inner">
 
-    <div class="intro">
-
-        <h1>Brimstone lineups</h1>
-
-        <p>
-            Pick a map to find lineups for attack and defense.
-        </p>
-
-    </div>
-
-
-    <div class="maps-header">
-
-        <h2>Maps</h2>
-
-        <span>12 maps</span>
-
-    </div>
-
-
-    <div class="maps">
-
-        <div class="map-card" onclick="openMap('Abyss')">
-            <div class="map-image" style="background-image:url('abyss.png')"></div>
-            <div class="map-info">
-                <h3>Abyss</h3>
-                <p>Lineups</p>
+            <div class="logo">
+                <div class="logo-mark">B</div>
+                Brim<span>Lineups</span>
             </div>
+
+            <div class="header-map">
+                Brimstone lineups
+            </div>
+
+        </div>
+    </header>
+
+
+    <main class="home">
+
+        <div class="intro">
+            <h1>Brimstone lineups</h1>
+
+            <p>
+                Pick a map to get started.
+            </p>
         </div>
 
-        <div class="map-card" onclick="openMap('Ascent')">
-            <div class="map-image" style="background-image:url('ascent.png')"></div>
-            <div class="map-info">
-                <h3>Ascent</h3>
-                <p>Lineups</p>
-            </div>
+
+        <div class="maps-head">
+            <h2>Maps</h2>
+            <span>12 maps</span>
         </div>
 
-        <div class="map-card" onclick="openMap('Bind')">
-            <div class="map-image" style="background-image:url('bind.png')"></div>
-            <div class="map-info">
-                <h3>Bind</h3>
-                <p>Lineups</p>
+
+        <div class="maps">
+
+            <div class="map-card" onclick="openMap('Abyss')">
+                <div class="map-image" style="background-image:url('abyss.png')"></div>
+                <div class="map-info">
+                    <h3>Abyss</h3>
+                    <p>Lineups</p>
+                </div>
             </div>
+
+            <div class="map-card" onclick="openMap('Ascent')">
+                <div class="map-image" style="background-image:url('ascent.png')"></div>
+                <div class="map-info">
+                    <h3>Ascent</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Bind')">
+                <div class="map-image" style="background-image:url('bind.png')"></div>
+                <div class="map-info">
+                    <h3>Bind</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Breeze')">
+                <div class="map-image" style="background-image:url('breeze.png')"></div>
+                <div class="map-info">
+                    <h3>Breeze</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Corrode')">
+                <div class="map-image" style="background-image:url('corrode.png')"></div>
+                <div class="map-info">
+                    <h3>Corrode</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Fracture')">
+                <div class="map-image" style="background-image:url('fracture.png')"></div>
+                <div class="map-info">
+                    <h3>Fracture</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Haven')">
+                <div class="map-image" style="background-image:url('haven.png')"></div>
+                <div class="map-info">
+                    <h3>Haven</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Icebox')">
+                <div class="map-image" style="background-image:url('icebox.png')"></div>
+                <div class="map-info">
+                    <h3>Icebox</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Lotus')">
+                <div class="map-image" style="background-image:url('lotus.png')"></div>
+                <div class="map-info">
+                    <h3>Lotus</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Pearl')">
+                <div class="map-image" style="background-image:url('pearl.png')"></div>
+                <div class="map-info">
+                    <h3>Pearl</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Split')">
+                <div class="map-image" style="background-image:url('split.png')"></div>
+                <div class="map-info">
+                    <h3>Split</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
+            <div class="map-card" onclick="openMap('Sunset')">
+                <div class="map-image" style="background-image:url('sunset.png')"></div>
+                <div class="map-info">
+                    <h3>Sunset</h3>
+                    <p>Lineups</p>
+                </div>
+            </div>
+
         </div>
 
-        <div class="map-card" onclick="openMap('Breeze')">
-            <div class="map-image" style="background-image:url('breeze.png')"></div>
-            <div class="map-info">
-                <h3>Breeze</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Corrode')">
-            <div class="map-image" style="background-image:url('corrode.png')"></div>
-            <div class="map-info">
-                <h3>Corrode</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Fracture')">
-            <div class="map-image" style="background-image:url('fracture.png')"></div>
-            <div class="map-info">
-                <h3>Fracture</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Haven')">
-            <div class="map-image" style="background-image:url('haven.png')"></div>
-            <div class="map-info">
-                <h3>Haven</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Icebox')">
-            <div class="map-image" style="background-image:url('icebox.png')"></div>
-            <div class="map-info">
-                <h3>Icebox</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Lotus')">
-            <div class="map-image" style="background-image:url('lotus.png')"></div>
-            <div class="map-info">
-                <h3>Lotus</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Pearl')">
-            <div class="map-image" style="background-image:url('pearl.png')"></div>
-            <div class="map-info">
-                <h3>Pearl</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Split')">
-            <div class="map-image" style="background-image:url('split.png')"></div>
-            <div class="map-info">
-                <h3>Split</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-        <div class="map-card" onclick="openMap('Sunset')">
-            <div class="map-image" style="background-image:url('sunset.png')"></div>
-            <div class="map-info">
-                <h3>Sunset</h3>
-                <p>Lineups</p>
-            </div>
-        </div>
-
-    </div>
-
-</main>
-```
+    </main>
 
 </section>
+
+
+<!-- MAP PAGE -->
 
 <section id="mapPage">
 
-```
-<header class="map-header">
+    <header class="map-header">
 
-    <div class="map-header-inner">
+        <div class="map-header-inner">
 
-        <button class="back" onclick="goHome()">
-            ← Maps
-        </button>
+            <button class="back" onclick="goHome()">
+                ← Maps
+            </button>
 
-        <div class="divider"></div>
+            <div class="header-divider"></div>
 
-        <div class="current-map" id="currentMap">
-            Abyss
-        </div>
-
-    </div>
-
-</header>
-
-
-<main class="map-content">
-
-    <div class="map-top">
-
-        <h1 id="mapTitle">
-            Abyss
-        </h1>
-
-        <p>
-            Pick a side and site.
-        </p>
-
-    </div>
-
-
-    <div class="side-tabs">
-
-        <button
-            class="side-tab active"
-            onclick="setSide(this, 'Attack')">
-            Attack
-        </button>
-
-        <button
-            class="side-tab"
-            onclick="setSide(this, 'Defense')">
-            Defense
-        </button>
-
-    </div>
-
-
-    <div class="site-tabs" id="siteTabs"></div>
-
-
-    <div class="lineup-grid" id="lineupGrid">
-
-        <div class="lineup">
-
-            <div class="lineup-preview">
-                <span>Screenshot</span>
+            <div class="current-map" id="currentMap">
+                Ascent
             </div>
 
-            <div class="lineup-info">
+        </div>
 
-                <div class="lineup-type">
-                    INCENDIARY · ATTACK
+    </header>
+
+
+    <main class="map-content">
+
+        <div class="map-title">
+
+            <h1 id="mapTitle">
+                Ascent
+            </h1>
+
+            <p>
+                Choose a side, then choose a site.
+            </p>
+
+        </div>
+
+
+        <div class="side-tabs">
+
+            <button
+                class="side-tab active"
+                onclick="setSide(this, 'Attack')">
+                Attack
+            </button>
+
+            <button
+                class="side-tab"
+                onclick="setSide(this, 'Defense')">
+                Defense
+            </button>
+
+        </div>
+
+
+        <div class="site-tabs" id="siteTabs"></div>
+
+
+        <div class="lineup-box">
+
+            <div class="lineup-box-head">
+
+                <div class="lineup-kind">
+                    Brimstone · Incendiary
                 </div>
 
-                <h3>A Main → Default</h3>
+                <h2 id="lineupTitle">
+                    A Main → Default
+                </h2>
 
-                <p>
+                <p
+                    class="lineup-box-description"
+                    id="lineupDescription">
                     Default plant lineup.
                 </p>
 
-                <button class="view">
+            </div>
+
+
+            <div class="lineup-box-bottom">
+
+                <div
+                    class="lineup-location"
+                    id="lineupLocation">
+                    Attack · A Site
+                </div>
+
+                <button
+                    class="view-button"
+                    onclick="openLineup()">
                     View lineup
                 </button>
 
@@ -671,55 +783,115 @@ button {
 
         </div>
 
+    </main>
 
-        <div class="lineup">
+</section>
 
-            <div class="lineup-preview">
-                <span>Screenshot</span>
-            </div>
 
-            <div class="lineup-info">
+<!-- LINEUP MODAL -->
 
-                <div class="lineup-type">
-                    INCENDIARY · ATTACK
-                </div>
+<div class="modal" id="lineupModal">
 
-                <h3>A Main → Hell</h3>
+    <div class="modal-window">
 
-                <p>
-                    Lineup for the Hell area.
-                </p>
+        <div class="modal-header">
 
-                <button class="view">
-                    View lineup
-                </button>
+            <h2 id="modalTitle">
+                A Site → Default
+            </h2>
 
-            </div>
+            <button
+                class="close"
+                onclick="closeLineup()">
+                ×
+            </button>
 
         </div>
 
 
-        <div class="lineup">
+        <div class="modal-content">
 
-            <div class="lineup-preview">
-                <span>Screenshot</span>
-            </div>
+            <div class="step">
 
-            <div class="lineup-info">
-
-                <div class="lineup-type">
-                    INCENDIARY · ATTACK
+                <div class="step-title">
+                    Where to stand
                 </div>
 
-                <h3>A Lobby → Generator</h3>
+                <div class="step-image">
+                    <span id="standPlaceholder">
+                        Stand screenshot goes here
+                    </span>
 
-                <p>
-                    Plant denial around Generator.
+                    <img
+                        id="standImage"
+                        src=""
+                        alt=""
+                        style="display:none;">
+                </div>
+
+                <p
+                    class="step-comment"
+                    id="standComment">
+                    Add your explanation for where to stand here.
                 </p>
 
-                <button class="view">
-                    View lineup
-                </button>
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-title">
+                    Where to aim
+                </div>
+
+                <div class="step-image">
+                    <span id="aimPlaceholder">
+                        Aim screenshot goes here
+                    </span>
+
+                    <img
+                        id="aimImage"
+                        src=""
+                        alt=""
+                        style="display:none;">
+                </div>
+
+                <p
+                    class="step-comment"
+                    id="aimComment">
+                    Add your explanation for where to aim here.
+                </p>
+
+            </div>
+
+
+            <div
+                class="step tip-step"
+                id="tipSection">
+
+                <div class="step-title">
+                    Tip
+                </div>
+
+                <div class="step-image">
+
+                    <span id="tipPlaceholder">
+                        Tip screenshot goes here
+                    </span>
+
+                    <img
+                        id="tipImage"
+                        src=""
+                        alt=""
+                        style="display:none;">
+
+                </div>
+
+                <p
+                    class="step-comment"
+                    id="tipComment">
+                    Add your tip explanation here.
+                </p>
 
             </div>
 
@@ -727,18 +899,16 @@ button {
 
     </div>
 
-</main>
-```
+</div>
 
-</section>
 
 <script>
 
-const home = document.getElementById("home");
-const mapPage = document.getElementById("mapPage");
-const mapTitle = document.getElementById("mapTitle");
-const currentMapText = document.getElementById("currentMap");
-const siteTabs = document.getElementById("siteTabs");
+/*
+    MAP SITES
+
+    These are the actual sites available on each map.
+*/
 
 const mapSites = {
     Abyss: ["A", "B"],
@@ -755,10 +925,89 @@ const mapSites = {
     Sunset: ["A", "B"]
 };
 
-let currentMap = "Abyss";
+
+/*
+    MAP IMAGES
+*/
+
+const mapImages = {
+    Abyss: "abyss.png",
+    Ascent: "ascent.png",
+    Bind: "bind.png",
+    Breeze: "breeze.png",
+    Corrode: "corrode.png",
+    Fracture: "fracture.png",
+    Haven: "haven.png",
+    Icebox: "icebox.png",
+    Lotus: "lotus.png",
+    Pearl: "pearl.png",
+    Split: "split.png",
+    Sunset: "sunset.png"
+};
+
+
+/*
+    LINEUPS
+
+    Later, this is where we will put your real
+    screenshot filenames and comments.
+
+    A lineup can have:
+    - stand image + comment
+    - aim image + comment
+    - optional tip image + comment
+*/
+
+const lineups = {};
+
+
+/*
+    CURRENT SELECTION
+*/
+
+let currentMap = "Ascent";
 let currentSide = "Attack";
 let currentSite = "A";
 
+
+/*
+    ELEMENTS
+*/
+
+const home = document.getElementById("home");
+const mapPage = document.getElementById("mapPage");
+
+const mapTitle = document.getElementById("mapTitle");
+const currentMapText = document.getElementById("currentMap");
+
+const siteTabs = document.getElementById("siteTabs");
+
+const lineupTitle = document.getElementById("lineupTitle");
+const lineupDescription = document.getElementById("lineupDescription");
+const lineupLocation = document.getElementById("lineupLocation");
+
+const modal = document.getElementById("lineupModal");
+
+const modalTitle = document.getElementById("modalTitle");
+
+const standImage = document.getElementById("standImage");
+const aimImage = document.getElementById("aimImage");
+const tipImage = document.getElementById("tipImage");
+
+const standPlaceholder = document.getElementById("standPlaceholder");
+const aimPlaceholder = document.getElementById("aimPlaceholder");
+const tipPlaceholder = document.getElementById("tipPlaceholder");
+
+const standComment = document.getElementById("standComment");
+const aimComment = document.getElementById("aimComment");
+const tipComment = document.getElementById("tipComment");
+
+const tipSection = document.getElementById("tipSection");
+
+
+/*
+    OPEN MAP
+*/
 
 function openMap(map) {
 
@@ -772,7 +1021,12 @@ function openMap(map) {
     currentMapText.textContent = map;
 
     document.querySelectorAll(".side-tab").forEach((button, index) => {
-        button.classList.toggle("active", index === 0);
+
+        button.classList.toggle(
+            "active",
+            index === 0
+        );
+
     });
 
     createSiteTabs();
@@ -781,14 +1035,24 @@ function openMap(map) {
 }
 
 
+/*
+    RETURN HOME
+*/
+
 function goHome() {
 
     mapPage.classList.remove("active");
     home.classList.remove("hidden");
 
+    closeLineup();
+
     window.scrollTo(0, 0);
 }
 
+
+/*
+    CREATE SITE BUTTONS
+*/
 
 function createSiteTabs() {
 
@@ -818,9 +1082,13 @@ function createSiteTabs() {
 
     });
 
-    updateLineups();
+    updateLineup();
 }
 
+
+/*
+    CHANGE SIDE
+*/
 
 function setSide(button, side) {
 
@@ -832,9 +1100,13 @@ function setSide(button, side) {
 
     button.classList.add("active");
 
-    updateLineups();
+    updateLineup();
 }
 
+
+/*
+    CHANGE SITE
+*/
 
 function setSite(button, site) {
 
@@ -846,25 +1118,205 @@ function setSite(button, site) {
 
     button.classList.add("active");
 
-    updateLineups();
+    updateLineup();
 }
 
 
-function updateLineups() {
+/*
+    GET CURRENT LINEUP
+*/
 
-    console.log(
-        "Map:",
-        currentMap,
-        "Side:",
-        currentSide,
-        "Site:",
-        currentSite
-    );
+function getCurrentLineup() {
+
+    const key =
+        currentMap +
+        "_" +
+        currentSide +
+        "_" +
+        currentSite;
+
+    return lineups[key] || {
+
+        title:
+            currentSite +
+            " Site → Default",
+
+        description:
+            "Your lineup description will go here.",
+
+        standImage: "",
+        standComment:
+            "Add your stand screenshot and explanation here.",
+
+        aimImage: "",
+        aimComment:
+            "Add your aim screenshot and explanation here.",
+
+        tipImage: "",
+        tipComment:
+            "Add your tip and explanation here."
+    };
+}
+
+
+/*
+    UPDATE LINEUP CARD
+*/
+
+function updateLineup() {
+
+    const lineup = getCurrentLineup();
+
+    lineupTitle.textContent =
+        lineup.title;
+
+    lineupDescription.textContent =
+        lineup.description;
+
+    lineupLocation.textContent =
+        currentSide +
+        " · " +
+        currentSite +
+        " Site";
 
 }
+
+
+/*
+    OPEN LINEUP MODAL
+*/
+
+function openLineup() {
+
+    const lineup = getCurrentLineup();
+
+    modalTitle.textContent =
+        lineup.title;
+
+    /*
+        Stand image
+    */
+
+    if (lineup.standImage) {
+
+        standImage.src = lineup.standImage;
+        standImage.style.display = "block";
+        standPlaceholder.style.display = "none";
+
+    } else {
+
+        standImage.style.display = "none";
+        standPlaceholder.style.display = "block";
+
+    }
+
+    standComment.textContent =
+        lineup.standComment;
+
+
+    /*
+        Aim image
+    */
+
+    if (lineup.aimImage) {
+
+        aimImage.src = lineup.aimImage;
+        aimImage.style.display = "block";
+        aimPlaceholder.style.display = "none";
+
+    } else {
+
+        aimImage.style.display = "none";
+        aimPlaceholder.style.display = "block";
+
+    }
+
+    aimComment.textContent =
+        lineup.aimComment;
+
+
+    /*
+        Optional tip
+    */
+
+    if (lineup.tipImage || lineup.tipComment) {
+
+        tipSection.style.display = "block";
+
+        if (lineup.tipImage) {
+
+            tipImage.src = lineup.tipImage;
+            tipImage.style.display = "block";
+            tipPlaceholder.style.display = "none";
+
+        } else {
+
+            tipImage.style.display = "none";
+            tipPlaceholder.style.display = "block";
+
+        }
+
+        tipComment.textContent =
+            lineup.tipComment;
+
+    } else {
+
+        tipSection.style.display = "none";
+
+    }
+
+    modal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/*
+    CLOSE LINEUP MODAL
+*/
+
+function closeLineup() {
+
+    modal.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/*
+    CLOSE MODAL BY CLICKING OUTSIDE
+*/
+
+modal.addEventListener("click", function(event) {
+
+    if (event.target === modal) {
+        closeLineup();
+    }
+
+});
+
+
+/*
+    ESC KEY
+*/
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeLineup();
+    }
+
+});
+
+
+/*
+    START WITH ASCENT
+*/
+
+createSiteTabs();
 
 </script>
 
 </body>
 </html>
-```
